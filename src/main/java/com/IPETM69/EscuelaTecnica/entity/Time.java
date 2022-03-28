@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@Table(name = "times")
 public class Time {
 
     @Id
@@ -17,8 +18,10 @@ public class Time {
     @Enumerated(EnumType.STRING)
     private Enum day;
 
+    @Column(name = "time_in")
     private String timeIn;
 
+    @Column(name = "time_out")
     private String timeOut;
 
 }
