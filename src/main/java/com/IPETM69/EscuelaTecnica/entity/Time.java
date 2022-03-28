@@ -1,5 +1,6 @@
 package com.IPETM69.EscuelaTecnica.entity;
 
+import com.IPETM69.EscuelaTecnica.enumeration.DayEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +17,7 @@ public class Time {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private Enum day;
+    private DayEnum day;
 
     @Column(name = "time_in")
     private String timeIn;
