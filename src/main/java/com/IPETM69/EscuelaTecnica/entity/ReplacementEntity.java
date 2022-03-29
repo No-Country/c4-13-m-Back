@@ -1,12 +1,33 @@
 package com.IPETM69.EscuelaTecnica.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import java.time.LocalDate;
 import java.util.Date;
 
+@Entity
+@Getter
+@Setter
 public class ReplacementEntity extends EmployeeEntity {
 
     private PositionEnum name;
-    private Date checkIn;
-    private Date checkOut;
+
+    @Column(name = "fecha_ingreso")
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    private LocalDate checkIn;
+
+    @Column(name = "fecha_egreso")
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    private LocalDate checkOut;
+
+    @OneToOne
+    @JoinColumn(name = "replace_who_id")
     private EmployeeEntity replaceWho;
 
     public ReplacementEntity() {
@@ -20,35 +41,4 @@ public class ReplacementEntity extends EmployeeEntity {
         this.replaceWho = replaceWho;
     }
 
-    public PositionEnum getName() {
-        return name;
-    }
-
-    public void setName(PositionEnum name) {
-        this.name = name;
-    }
-
-    public Date getCheckIn() {
-        return checkIn;
-    }
-
-    public void setCheckIn(Date checkIn) {
-        this.checkIn = checkIn;
-    }
-
-    public Date getCheckOut() {
-        return checkOut;
-    }
-
-    public void setCheckOut(Date checkOut) {
-        this.checkOut = checkOut;
-    }
-
-    public EmployeeEntity getReplaceWho() {
-        return replaceWho;
-    }
-
-    public void setReplaceWho(EmployeeEntity replaceWho) {
-        this.replaceWho = replaceWho;
-    }
 }
