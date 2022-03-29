@@ -1,6 +1,8 @@
 package com.IPETM69.EscuelaTecnica.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,6 +14,8 @@ import java.util.List;
 @Table(name="empleados")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class EmployeeEntity {
 
     @Id
@@ -30,7 +34,6 @@ public class EmployeeEntity {
     @Column(name = "telefono")
     private Long phone;
 
-    @Column(name = "email")
     private String email;
 
     @Column(name = "legajo")
@@ -49,12 +52,10 @@ public class EmployeeEntity {
             joinColumns = @JoinColumn(name = "id_empleados"),
             inverseJoinColumns = @JoinColumn(name = "id_actividades")
     )
-    private List<Activity> activities = new ArrayList<>();
+    private List<ActivityEntity> activities = new ArrayList<>();
 
     @Column(name = "es_titular?")
     private Boolean esTitular;
 
-    public EmployeeEntity() {
-    }
 
 }

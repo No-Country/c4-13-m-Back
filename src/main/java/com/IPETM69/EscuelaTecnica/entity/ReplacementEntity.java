@@ -1,6 +1,8 @@
 package com.IPETM69.EscuelaTecnica.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -14,6 +16,8 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ReplacementEntity extends EmployeeEntity {
 
     private PositionEnum name;
@@ -29,16 +33,5 @@ public class ReplacementEntity extends EmployeeEntity {
     @OneToOne
     @JoinColumn(name = "replace_who_id")
     private EmployeeEntity replaceWho;
-
-    public ReplacementEntity() {
-    }
-
-    public ReplacementEntity(Long id, String firstName, String lastName, String dni, Long phone, String email, String file, Activity[] activities, Boolean esTitular, PositionEnum name, Date checkIn, Date checkOut, EmployeeEntity replaceWho) {
-        super(id, firstName, lastName, dni, phone, email, file, activities, esTitular);
-        this.name = name;
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
-        this.replaceWho = replaceWho;
-    }
 
 }
