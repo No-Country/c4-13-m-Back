@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -23,5 +24,6 @@ public class ClassEntity {
     private String division;
     private ShiftEnum shift;
     private String department;
-    private List <ActivityEntity> activities;
+
+    //private List <ActivityEntity> activity =  new ArrayList<>();
 }
