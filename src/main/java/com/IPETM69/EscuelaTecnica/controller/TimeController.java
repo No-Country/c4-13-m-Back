@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 @RestController
 @RequestMapping("/times")
@@ -24,7 +26,7 @@ public class TimeController {
     }
 
     @PostMapping
-    public ResponseEntity<TimeDTO> create(@RequestBody TimeDTO dto){
+    public ResponseEntity<TimeDTO> create(@Valid @RequestBody TimeDTO dto){
 
         TimeDTO timeDTO = timeService.save(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(timeDTO);
@@ -32,7 +34,7 @@ public class TimeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TimeDTO> update(@PathVariable Long id, @RequestBody TimeDTO dto){
+    public ResponseEntity<TimeDTO> update(@Valid @PathVariable Long id, @RequestBody TimeDTO dto){
 
         TimeDTO timeDTO = timeService.update(id, dto);
         return ResponseEntity.ok().body(timeDTO);
