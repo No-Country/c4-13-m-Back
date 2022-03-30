@@ -1,4 +1,4 @@
-package com.IPETM69.EscuelaTecnica.entity;
+package com.IPETM69.EscuelaTecnica.enumeration;
 
 public enum PositionEnum {
     SUPLENTE, INTERINO
