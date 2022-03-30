@@ -21,6 +21,7 @@ public class TimeMapper {
     public TimeDTO timeEntity2DTO (TimeEntity entity){
 
         TimeDTO dto = new TimeDTO();
+        dto.setId(entity.getId());
         dto.setDay(entity.getDay());
         dto.setTimeIn(entity.getTimeIn().toString());
         dto.setTimeOut(entity.getTimeOut().toString());
