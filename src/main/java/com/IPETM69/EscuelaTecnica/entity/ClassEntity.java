@@ -7,11 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-<<<<<<< HEAD
-=======
-import java.util.ArrayList;
-import java.util.List;
->>>>>>> b907c0f7424b06a3b6769c2ff3d60b100ad6c0cd
 
 @Setter
 @Getter
