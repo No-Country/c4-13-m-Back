@@ -2,6 +2,7 @@ package com.IPETM69.EscuelaTecnica.service.impl;
 
 import com.IPETM69.EscuelaTecnica.dto.ClassDTO;
 import com.IPETM69.EscuelaTecnica.entity.ClassEntity;
+import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
 import com.IPETM69.EscuelaTecnica.mapper.ClassMapper;
 import com.IPETM69.EscuelaTecnica.repository.ClassRepository;
 import com.IPETM69.EscuelaTecnica.service.ClassService;
@@ -31,7 +32,7 @@ public class ClassServiceImpl implements ClassService {
     public ClassDTO update(Long id, ClassDTO classDTO) {
         Optional<ClassEntity> entity = classRepository.findById(id);
         if (!entity.isPresent()) {
-           // throw new ParamNotFound("Error: Invalid class id");
+           throw new ParamNotFound("Error: Invalid class id");
         }
         classMapper.classEntityRefreshValues(entity.get(), classDTO);
         ClassEntity entitySaved = classRepository.save(entity.get());
@@ -46,7 +47,7 @@ public class ClassServiceImpl implements ClassService {
     public ClassDTO findById(@NonNull Long id) {
         Optional<ClassEntity> entity = classRepository.findById(id);
         if (!entity.isPresent()) {
-            //throw new ParamNotFound("Error: Invalid class id");
+            throw new ParamNotFound("Error: Invalid class id");
         }
         return classMapper.classEntity2DTO(entity.get());
 
