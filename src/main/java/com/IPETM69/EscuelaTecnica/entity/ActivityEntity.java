@@ -1,6 +1,7 @@
 package com.IPETM69.EscuelaTecnica.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,6 @@ public class ActivityEntity implements Serializable {
     private String name;
 //    private EmployeeEntity employee;
 //    private List<TimeEntity> times;
-    private List<ClassEntity> classes;
+    //private List<ClassEntity> classes = new ArrayList<>();
     
 }
