@@ -3,11 +3,8 @@ package com.IPETM69.EscuelaTecnica.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +21,8 @@ public class ActivityEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-//    private EmployeeEntity employee;
+    @ManyToMany(mappedBy = "activities", cascade = CascadeType.ALL)
+    private List<EmployeeEntity> employees = new ArrayList<>();
 //    private List<TimeEntity> times;
     //private List<ClassEntity> classes = new ArrayList<>();
     
