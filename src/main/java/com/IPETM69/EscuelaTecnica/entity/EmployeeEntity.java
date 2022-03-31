@@ -10,28 +10,29 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Entity
-@Table(name="empleados")
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name="empleados")
 public class EmployeeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nombre")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "apellido")
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "dni")
     private String dni;
 
-    @Column(name = "telefono")
+    @Column(name = "phone")
     private Long phone;
 
     private String email;
@@ -39,7 +40,7 @@ public class EmployeeEntity {
     @Column(name = "legajo")
     private String file;
 
-    @Column(name = "actividades")
+    @Column(name = "activities")
     @ManyToMany(
             cascade = {
                     CascadeType.PERSIST,
@@ -48,7 +49,7 @@ public class EmployeeEntity {
             }
     )
     @JoinTable(
-            name = "Actividades_de_empleados",
+            name = "employee_activities",
             joinColumns = @JoinColumn(name = "id_empleados"),
             inverseJoinColumns = @JoinColumn(name = "id_actividades")
     )
