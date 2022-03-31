@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ClassRepository extends JpaRepository<ClassEntity, Long>, JpaSpecificationExecutor<ClassEntity> {
+public interface ClassRepository extends JpaRepository<ClassEntity, Long> {
         List<ClassEntity> findAll(Specification<ClassEntity> spec);
 }

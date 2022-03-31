@@ -1,16 +1,18 @@
 package com.IPETM69.EscuelaTecnica.service;
 
-import com.IPETM69.EscuelaTecnica.dto.ClassDto;
+import com.IPETM69.EscuelaTecnica.dto.ClassDTO;
 
 import java.util.List;
 
 public interface ClassService {
 
-    ClassDto save (ClassDto dto);
+    public ClassDTO create(ClassDTO dto);
 
-    void delete(Long id);
+    public void delete(Long id);
 
-    ClassDto update(Long id, ClassDto classDTO);
+    public ClassDTO update(Long id, ClassDTO classDTO);
 
-    List<ClassDto> getAllClasses();
+    public List<ClassDTO> getAllClasses();
+
+    public ClassDTO findById(Long id);
 }

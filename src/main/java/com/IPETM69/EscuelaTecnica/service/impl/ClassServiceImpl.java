@@ -1,13 +1,13 @@
 package com.IPETM69.EscuelaTecnica.service.impl;
 
-import com.IPETM69.EscuelaTecnica.dto.ClassDto;
+import com.IPETM69.EscuelaTecnica.dto.ClassDTO;
 import com.IPETM69.EscuelaTecnica.service.ClassService;
 
 import java.util.List;
 
 public class ClassServiceImpl implements ClassService {
 
-    public ClassDto save(ClassDto dto) {
+    public ClassDTO create(ClassDTO dto) {
         return null;
     }
 
@@ -15,11 +15,16 @@ public class ClassServiceImpl implements ClassService {
 
     }
 
-    public ClassDto update(Long id, ClassDto classDTO) {
+    public ClassDTO update(Long id, ClassDTO classDTO) {
         return null;
     }
 
-    public List<ClassDto> getAllClasses() {
+    public List<ClassDTO> getAllClasses() {
+        return null;
+    }
+
+
+    public ClassDTO findById(Long id) {
         return null;
     }
 }
