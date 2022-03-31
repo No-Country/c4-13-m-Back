@@ -19,9 +19,11 @@ import lombok.Setter;
 public class ActivityEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="activities_id")
     private Long id;
     private String name;
-    @ManyToMany(mappedBy = "activities",
+    @ManyToMany(
+            mappedBy = "activities",
             cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE

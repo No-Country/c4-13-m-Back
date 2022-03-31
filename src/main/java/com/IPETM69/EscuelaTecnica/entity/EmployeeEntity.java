@@ -7,7 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -16,47 +15,46 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="empleados")
+@Table(name="employees")
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class EmployeeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name="employees_id")
+    protected Long id;
 
     @Column(name = "first_name")
-    private String firstName;
+    protected String firstName;
 
     @Column(name = "last_name")
-    private String lastName;
+    protected String lastName;
 
-    @Column(name = "dni")
-    private String dni;
+    protected String dni;
 
-    @Column(name = "phone")
-    private Long phone;
+    protected Long phone;
 
-    private String email;
+    protected String email;
 
     @Column(name = "legajo")
-    private String file;
+    protected String file;
 
     @Column(name = "activities")
     @ManyToMany(
             cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
-
             }
     )
     @JoinTable(
             name = "employee_activities",
-            joinColumns = @JoinColumn(name = "id_empleados"),
-            inverseJoinColumns = @JoinColumn(name = "id_actividades")
+            joinColumns = @JoinColumn(name = "employees_id"),
+            inverseJoinColumns = @JoinColumn(name = "activities_id")
     )
-    private List<ActivityEntity> activities = new ArrayList<>();
+    protected List<ActivityEntity> activities = new ArrayList<>();
 
-    @Column(name = "es_titular?")
-    private Boolean esTitular;
+    @Column(name = "es_titular")
+    protected Boolean esTitular;
 
 
 }
