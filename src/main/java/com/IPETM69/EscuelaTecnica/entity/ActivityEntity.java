@@ -20,11 +20,10 @@ public class ActivityEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    @ManyToMany(mappedBy = "activities", cascade = CascadeType.ALL)
-    private List<EmployeeEntity> employees = new ArrayList<>();
-//    private List<TimeEntity> times;
+    private String name; 
+    private List<TimeEntity> times = new ArrayList<>();
+    private List<ClassEntity> classes = new ArrayList<>();
+    private Boolean esCargo;
 
-    //private List<ClassEntity> classes = new ArrayList<>();
     
 }
