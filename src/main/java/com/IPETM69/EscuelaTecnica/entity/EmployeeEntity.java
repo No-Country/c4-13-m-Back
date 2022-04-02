@@ -54,7 +54,7 @@ public class EmployeeEntity {
     )
     private List<ActivityEntity> activities = new ArrayList<>();
 
-    @Column(name = "es_titular?")
+    @Column(name = "es_titular")
     private Boolean esTitular;
 
 
