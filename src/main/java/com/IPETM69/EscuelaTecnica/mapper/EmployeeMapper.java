@@ -9,30 +9,33 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
+
+
 @Component
 public class EmployeeMapper {
+    /*
+    si llegamos a eliminar el replacemententity tengo q modificar este mapper y volver a ponerlo en employee
+     */
+    public ReplacementEntity employeeDTO2Entity (EmployeeDTO employeeDTO, ReplacementDTO replacementDTO){
+        ReplacementEntity replacement = new ReplacementEntity();
 
-    public EmployeeEntity employeeDTO2Entity (EmployeeDTO employeeDTO, ReplacementDTO replacementDTO){
-        EmployeeEntity entity = new EmployeeEntity();
-
-        entity.setFirstName(employeeDTO.getFirstName());
-        entity.setLastName(employeeDTO.getLastName());
-        entity.setDni(employeeDTO.getDni());
-        entity.setPhone(employeeDTO.getPhone());
-        entity.setEmail(employeeDTO.getEmail());
-        entity.setFile(employeeDTO.getFile());
-        entity.setActivities(employeeDTO.getActivities());
-        entity.setEsTitular(employeeDTO.getEsTitular());
+        replacement.setFirstName(employeeDTO.getFirstName());
+        replacement.setLastName(employeeDTO.getLastName());
+        replacement.setDni(employeeDTO.getDni());
+        replacement.setPhone(employeeDTO.getPhone());
+        replacement.setEmail(employeeDTO.getEmail());
+        replacement.setFile(employeeDTO.getFile());
+        replacement.setActivities(employeeDTO.getActivities());
+        replacement.setEsTitular(employeeDTO.getEsTitular());
 
         if (employeeDTO.getEsTitular()){
-            ReplacementEntity replacement = new ReplacementEntity();
             replacement.setName(PositionEnum.valueOf(replacementDTO.getName()));
             replacement.setCheckIn(LocalDate.parse(replacementDTO.getCheckIn()));
             replacement.setCheckOut(LocalDate.parse(replacementDTO.getCheckOut()));
             //replacement.setReplaceWho(); // como hago para convertir un string en un employee entity
         }
 
-        return entity;
+        return replacement;
     }
 
     public EmployeeDTO employeeEntity2DTO (EmployeeEntity entity){
