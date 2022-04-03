@@ -1,6 +1,7 @@
 package com.IPETM69.EscuelaTecnica.controller;
 
 import com.IPETM69.EscuelaTecnica.dto.EmployeeDTO;
+import com.IPETM69.EscuelaTecnica.dto.ReplacementDTO;
 import com.IPETM69.EscuelaTecnica.entity.EmployeeEntity;
 import com.IPETM69.EscuelaTecnica.mapper.EmployeeMapper;
 import com.IPETM69.EscuelaTecnica.service.EmployeeService;
@@ -20,8 +21,8 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @PostMapping
-    public ResponseEntity<EmployeeDTO> save(@RequestBody EmployeeDTO employee){
-        EmployeeDTO savedEmployee = employeeService.save(employee);
+    public ResponseEntity<EmployeeDTO> save(@RequestBody EmployeeDTO employee, @RequestBody ReplacementDTO replacement){
+        EmployeeDTO savedEmployee = employeeService.save(employee, replacement);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedEmployee);
     }
 
