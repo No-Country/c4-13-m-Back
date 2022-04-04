@@ -24,7 +24,6 @@ public class ActivityEntity implements Serializable {
     @ManyToMany(mappedBy = "activities", cascade = CascadeType.ALL)
     private List<EmployeeEntity> employees = new ArrayList<>();
 //    private List<TimeEntity> times;
-
     //private List<ClassEntity> classes = new ArrayList<>();
     
 }
