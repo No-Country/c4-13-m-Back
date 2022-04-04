@@ -19,9 +19,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public EmployeeDTO save(EmployeeDTO employeeDTO, ReplacementDTO replacementDTO){
+    public EmployeeDTO save(EmployeeDTO employeeDTO){
         //convertir dto a entity
-        ReplacementEntity entity = employeeMapper.employeeDTO2Entity(employeeDTO, replacementDTO);
+        EmployeeEntity entity = employeeMapper.employeeDTO2Entity(employeeDTO);
         //guardamos la entidad en la BBDD
         EmployeeEntity entitySaved = employeeRepository.save(entity);
         //volvemos a convertir de entity a DTO

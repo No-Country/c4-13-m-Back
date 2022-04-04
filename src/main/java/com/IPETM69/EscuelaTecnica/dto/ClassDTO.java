@@ -1,4 +1,4 @@
-package com.IPETM69.EscuelaTecnica.entity;
+package com.IPETM69.EscuelaTecnica.dto;
 
 import com.IPETM69.EscuelaTecnica.enumeration.ShiftEnum;
 import lombok.AllArgsConstructor;
@@ -6,22 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "classes")
-public class ClassEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ClassDTO {
     private Long id;
     private String grade;
     private String division;
     private ShiftEnum shift;
     private String department;
-    //private List <ActivityEntity> activities = new ArrayList<>();
-
 }

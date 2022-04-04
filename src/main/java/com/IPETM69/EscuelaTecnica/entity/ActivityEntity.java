@@ -31,7 +31,6 @@ public class ActivityEntity {
     )
     private List<EmployeeEntity> employees = new ArrayList<>();
 //    private List<TimeEntity> times;
-
     //private List<ClassEntity> classes = new ArrayList<>();
     
 }
