@@ -4,10 +4,8 @@ import com.IPETM69.EscuelaTecnica.enumeration.DayEnum;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -24,11 +22,9 @@ public class TimeEntity {
     private DayEnum day;
 
     @Column(name = "time_in")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate timeIn;
+    private String timeIn;
 
     @Column(name = "time_out")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate timeOut;
+    private String timeOut;
 
 }
