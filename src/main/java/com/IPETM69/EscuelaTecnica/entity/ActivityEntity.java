@@ -25,5 +25,6 @@ public class ActivityEntity implements Serializable {
     private List<ClassEntity> classes = new ArrayList<>();
     private Boolean esCargo;
 
+
     
 }
