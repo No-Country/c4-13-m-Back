@@ -1,14 +1,11 @@
 package com.IPETM69.EscuelaTecnica.mapper;
 
 import com.IPETM69.EscuelaTecnica.dto.EmployeeDTO;
-import com.IPETM69.EscuelaTecnica.dto.ReplacementDTO;
 import com.IPETM69.EscuelaTecnica.entity.EmployeeEntity;
-import com.IPETM69.EscuelaTecnica.entity.ReplacementEntity;
-import com.IPETM69.EscuelaTecnica.enumeration.PositionEnum;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Component
@@ -41,4 +38,24 @@ public class EmployeeMapper {
 
         return dto;
     }
+
+    public List<EmployeeDTO> employeeEntityList2DTOList(List<EmployeeEntity> entities) {
+        List<EmployeeDTO> dtos = new ArrayList<>();
+        for (EmployeeEntity entity : entities) {
+            dtos.add(employeeEntity2DTO(entity));
+        }
+        return dtos;
+    }
+
+    public void employeeEntityRefreshValues(EmployeeEntity employeeEntity, EmployeeDTO employeeDTO) {
+        employeeEntity.setFirstName(employeeDTO.getFirstName());
+        employeeEntity.setLastName(employeeDTO.getLastName());
+        employeeEntity.setDni(employeeDTO.getDni());
+        employeeEntity.setPhone(employeeDTO.getPhone());
+        employeeEntity.setEmail(employeeDTO.getEmail());
+        employeeEntity.setFile(employeeDTO.getFile());
+        employeeEntity.setActivities(employeeDTO.getActivities());
+    }
+
+
 }

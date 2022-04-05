@@ -40,21 +40,7 @@ public class EmployeeEntity {
     protected String file;
 
     @Column(name = "activities")
-    @ManyToMany(
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            }
-    )
-    @JoinTable(
-            name = "employee_activities",
-            joinColumns = @JoinColumn(name = "employees_id"),
-            inverseJoinColumns = @JoinColumn(name = "activities_id")
-    )
+    @OneToMany(cascade = CascadeType.ALL)
     protected List<ActivityEntity> activities = new ArrayList<>();
-
-    @Column(name = "es_titular")
-    protected Boolean esTitular;
-
 
 }
