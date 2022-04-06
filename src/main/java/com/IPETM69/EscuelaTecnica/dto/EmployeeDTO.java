@@ -18,6 +18,5 @@ public class EmployeeDTO {
     private String email;
     private String file;
     private List<ActivityEntity> activities = new ArrayList<>();
-    private Boolean esTitular;
 
 }

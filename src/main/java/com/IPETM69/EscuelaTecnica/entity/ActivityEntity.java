@@ -16,12 +16,19 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "activities")
-public class ActivityEntity implements Serializable {
+public class ActivityEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="activities_id")
     private Long id;
     private String name;
-    @ManyToMany(mappedBy = "activities", cascade = CascadeType.ALL)
+    @ManyToMany(
+            mappedBy = "activities",
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }
+    )
     private List<EmployeeEntity> employees = new ArrayList<>();
 //    private List<TimeEntity> times;
     //private List<ClassEntity> classes = new ArrayList<>();
