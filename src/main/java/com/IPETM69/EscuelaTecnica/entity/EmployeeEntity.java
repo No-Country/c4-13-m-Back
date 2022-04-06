@@ -7,55 +7,40 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-@Entity
-@Table(name="empleados")
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name="employees")
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class EmployeeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name="employees_id")
+    protected Long id;
 
-    @Column(name = "nombre")
-    private String firstName;
+    @Column(name = "first_name")
+    protected String firstName;
 
-    @Column(name = "apellido")
-    private String lastName;
+    @Column(name = "last_name")
+    protected String lastName;
 
-    @Column(name = "dni")
-    private String dni;
+    protected String dni;
 
-    @Column(name = "telefono")
-    private Long phone;
+    protected Long phone;
 
-    private String email;
+    protected String email;
 
     @Column(name = "legajo")
-    private String file;
+    protected String file;
 
-    @Column(name = "actividades")
-    @ManyToMany(
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-
-            }
-    )
-    @JoinTable(
-            name = "Actividades_de_empleados",
-            joinColumns = @JoinColumn(name = "id_empleados"),
-            inverseJoinColumns = @JoinColumn(name = "id_actividades")
-    )
-    private List<ActivityEntity> activities = new ArrayList<>();
-
-    @Column(name = "es_titular?")
-    private Boolean esTitular;
-
+    @Column(name = "activities")
+    @OneToMany(cascade = CascadeType.ALL)
+    protected List<ActivityEntity> activities = new ArrayList<>();
 
 }
