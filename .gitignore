@@ -47,3 +47,7 @@ buildNumber.properties
 
 /*/application.properties
 
+### Sensitive Data ###
+src/main/resources/application.properties
+
+*.properties

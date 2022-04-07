@@ -16,14 +16,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "activities")
-public class ActivityEntity implements Serializable {
+public class ActivityEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="activities_id")
     private Long id;
+
     private String name; 
     private List<TimeEntity> times = new ArrayList<>();
     private List<ClassEntity> classes = new ArrayList<>();
     private Boolean esCargo;
+
 
 
     
