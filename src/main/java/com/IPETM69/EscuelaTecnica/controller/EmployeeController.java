@@ -1,6 +1,7 @@
 package com.IPETM69.EscuelaTecnica.controller;
 
 import com.IPETM69.EscuelaTecnica.dto.EmployeeDTO;
+import com.IPETM69.EscuelaTecnica.entity.ActivityEntity;
 import com.IPETM69.EscuelaTecnica.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,7 +37,6 @@ public class EmployeeController {
         return  employeeService.findById(id);
     }
 
-    //porque va put mapping???
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public EmployeeDTO update(@PathVariable Long id, @Valid @RequestBody EmployeeDTO employeeDTO){
@@ -47,6 +47,20 @@ public class EmployeeController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id){
         employeeService.delete(id);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<EmployeeDTO>> getDetailsByFilter(
+            @RequestParam(required = false) String firstName,
+            @RequestParam(required = false) String lastName,
+            @RequestParam(required = false) String dni,
+            @RequestParam(required = false) Long phone,
+            @RequestParam(required = false) String email,
+            @RequestParam(required = false) String file,
+            @RequestParam(required = false) List<ActivityEntity> activities
+    ){
+        List<EmployeeDTO> employeeDTOS = employeeService.getByFilters(firstName,lastName,dni,phone,email,file,activities);
+        return ResponseEntity.ok(employeeDTOS);
     }
 
 }
