@@ -16,8 +16,11 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class ReplacementEntity extends EmployeeEntity {
+public class ReplacementEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private PositionEnum name = null;
 
