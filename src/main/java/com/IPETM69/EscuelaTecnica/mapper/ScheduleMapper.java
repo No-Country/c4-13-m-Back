@@ -4,8 +4,9 @@ import com.IPETM69.EscuelaTecnica.dto.ScheduleDTO;
 import com.IPETM69.EscuelaTecnica.entity.ScheduleEntity;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class ScheduleMapper {
         
     public ScheduleEntity scheduleDTO2Entity(ScheduleDTO scheduleDTO) {

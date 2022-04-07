@@ -28,11 +28,11 @@ public class ReplacementEntity implements Serializable {
 
     @Column(name = "check_in")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate checkIn = null;
+    private LocalDate checkIn;
 
     @Column(name = "check_out")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate checkOut = null;
+    private LocalDate checkOut;
 
 
 //    @OneToOne

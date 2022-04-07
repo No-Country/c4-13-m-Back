@@ -4,8 +4,9 @@ import com.IPETM69.EscuelaTecnica.dto.ActivityDTO;
 import com.IPETM69.EscuelaTecnica.entity.ActivityEntity;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class ActivityMapper {
     
     public ActivityEntity activityDTO2Entity(ActivityDTO activityDTO) {
