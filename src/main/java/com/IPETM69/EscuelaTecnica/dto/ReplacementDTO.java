@@ -1,19 +1,19 @@
 package com.IPETM69.EscuelaTecnica.dto;
 
-import com.IPETM69.EscuelaTecnica.entity.EmployeeEntity;
-import com.IPETM69.EscuelaTecnica.enumeration.PositionEnum;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDate;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ReplacementDTO {
 
-    private String name;
+//    private String name;
     private String checkIn;
     private String checkOut;
-    private String replaceWho;
+//    private String replaceWho;
 
 }

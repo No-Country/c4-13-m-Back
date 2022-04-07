@@ -1,8 +1,6 @@
 package com.IPETM69.EscuelaTecnica.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -16,15 +14,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "activities")
-public class ActivityEntity {
+public class ActivityEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="activities_id")
     private Long id;
-
-    private String name; 
-    private List<TimeEntity> times = new ArrayList<>();
-    private List<ClassEntity> classes = new ArrayList<>();
+    private String name;
     private Boolean esCargo;
 
 

@@ -20,7 +20,7 @@ public class EmployeeMapper {
         entity.setPhone(employeeDTO.getPhone());
         entity.setEmail(employeeDTO.getEmail());
         entity.setFile(employeeDTO.getFile());
-        entity.setActivities(employeeDTO.getActivities());
+        entity.setSchedules(employeeDTO.getSchedules());
 
         return entity;
     }
@@ -34,7 +34,7 @@ public class EmployeeMapper {
         dto.setPhone(entity.getPhone());
         dto.setEmail(entity.getEmail());
         dto.setFile(entity.getFile());
-        dto.setActivities(entity.getActivities());
+        dto.setSchedules(entity.getSchedules());
 
         return dto;
     }
@@ -54,7 +54,7 @@ public class EmployeeMapper {
         employeeEntity.setPhone(employeeDTO.getPhone());
         employeeEntity.setEmail(employeeDTO.getEmail());
         employeeEntity.setFile(employeeDTO.getFile());
-        employeeEntity.setActivities(employeeDTO.getActivities());
+        employeeEntity.setSchedules(employeeDTO.getSchedules());
     }
 
 

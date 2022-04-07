@@ -1,14 +1,17 @@
 package com.IPETM69.EscuelaTecnica.dto;
 
-import com.IPETM69.EscuelaTecnica.entity.ActivityEntity;
+import com.IPETM69.EscuelaTecnica.entity.ScheduleEntity;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class EmployeeDTO {
 
     private String firstName;
@@ -17,6 +20,6 @@ public class EmployeeDTO {
     private Long phone;
     private String email;
     private String file;
-    private List<ActivityEntity> activities = new ArrayList<>();
+    private List<ScheduleEntity> schedules = new ArrayList<>();
 
 }
