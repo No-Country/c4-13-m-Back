@@ -63,8 +63,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.deleteById(id);
     }
 
-    public List<EmployeeDTO> getByFilters(String firstName, String lastName, String dni, Long phone, String email, String file, List<ActivityEntity> activities){
-        EmployeeFilterDTO employeeFilterDTO = new EmployeeFilterDTO(firstName,lastName,dni,phone,email,file,activities);
+    public List<EmployeeDTO> getByFilters(String firstName, String lastName){
+        EmployeeFilterDTO employeeFilterDTO = new EmployeeFilterDTO(firstName,lastName);
         List<EmployeeEntity> entities = employeeRepository.findAll(employeeSpecification.getByFilters(employeeFilterDTO));
         List<EmployeeDTO> dtos = employeeMapper.employeeEntityList2DTOList(entities);
         return dtos;

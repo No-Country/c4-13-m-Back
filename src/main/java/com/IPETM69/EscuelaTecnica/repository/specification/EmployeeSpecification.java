@@ -37,7 +37,7 @@ public class EmployeeSpecification {
 
             query.distinct(true);
 
-            return criteriaBuilder.and(predicates.toArray(predicates.toArray(new Predicate[0])));
+            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         };
 
 

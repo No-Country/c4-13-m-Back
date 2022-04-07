@@ -52,14 +52,9 @@ public class EmployeeController {
     @GetMapping
     public ResponseEntity<List<EmployeeDTO>> getDetailsByFilter(
             @RequestParam(required = false) String firstName,
-            @RequestParam(required = false) String lastName,
-            @RequestParam(required = false) String dni,
-            @RequestParam(required = false) Long phone,
-            @RequestParam(required = false) String email,
-            @RequestParam(required = false) String file,
-            @RequestParam(required = false) List<ActivityEntity> activities
+            @RequestParam(required = false) String lastName
     ){
-        List<EmployeeDTO> employeeDTOS = employeeService.getByFilters(firstName,lastName,dni,phone,email,file,activities);
+        List<EmployeeDTO> employeeDTOS = employeeService.getByFilters(firstName,lastName);
         return ResponseEntity.ok(employeeDTOS);
     }
 

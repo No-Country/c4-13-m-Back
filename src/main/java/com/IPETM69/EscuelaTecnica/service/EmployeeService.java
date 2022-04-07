@@ -18,6 +18,6 @@ public interface EmployeeService {
 
     void delete(@NonNull Long id);
 
-    List<EmployeeDTO> getByFilters(String firstName, String lastName, String dni, Long phone, String email, String file, List<ActivityEntity> activities);
+    List<EmployeeDTO> getByFilters(String firstName, String lastName);
 
 }
