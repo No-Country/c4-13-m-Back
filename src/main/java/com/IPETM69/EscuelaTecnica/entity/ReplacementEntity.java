@@ -16,7 +16,6 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class ReplacementEntity {
 
     @Id

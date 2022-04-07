@@ -34,47 +34,7 @@ public class EmployeeSpecification {
                         )
                 );
             }
-/*
-            if (StringUtils.hasLength(employeeFilterDTO.getDni())){
-                predicates.add(
-                        criteriaBuilder.like(
-                                criteriaBuilder.lower(root.get("dni")),
-                                "%"+employeeFilterDTO.getDni().toLowerCase()+"%"
-                        )
-                );
-            }
 
-            //busco un long a ver si existe... si existe es distinto de 0
-            if (employeeFilterDTO.getPhone()!=0){
-                predicates.add(
-                        criteriaBuilder.like(
-                                criteriaBuilder.lower(root.get("phone")),
-                                "%"+employeeFilterDTO.getPhone()+"%"
-                        )
-                );
-            }
-
-            if (StringUtils.hasLength(employeeFilterDTO.getEmail())){
-                predicates.add(
-                        criteriaBuilder.like(
-                                criteriaBuilder.lower(root.get("email")),
-                                "%"+employeeFilterDTO.getEmail()+"%"
-                        )
-                );
-            }
-
-            if (StringUtils.hasLength(employeeFilterDTO.getFile())){
-                predicates.add(
-                        criteriaBuilder.like(
-                                criteriaBuilder.lower(root.get("file")),
-                                "%"+employeeFilterDTO.getFile()+"%"
-                        )
-                );
-            }
-
-            //todo:specification de activities
-            //nose como queda la relacion
-*/
             query.distinct(true);
 
             return criteriaBuilder.and(predicates.toArray(predicates.toArray(new Predicate[0])));

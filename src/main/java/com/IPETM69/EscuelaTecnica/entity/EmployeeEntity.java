@@ -16,7 +16,6 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name="employees")
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class EmployeeEntity {
 
     @Id
