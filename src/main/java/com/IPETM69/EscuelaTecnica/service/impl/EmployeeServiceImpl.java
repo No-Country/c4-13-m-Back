@@ -30,30 +30,22 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeSpecification employeeSpecification;
 
     public EmployeeDTO save(EmployeeDTO employeeDTO){
-        //convertir dto a entity
         EmployeeEntity entity = employeeMapper.employeeDTO2Entity(employeeDTO);
-        //guardamos la entidad en la BBDD
         EmployeeEntity entitySaved = employeeRepository.save(entity);
-        //volvemos a convertir de entity a DTO
         EmployeeDTO result = employeeMapper.employeeEntity2DTO(entitySaved);
         return result;
     }
 
     public List<EmployeeDTO> getAllEmployees(){
-        //busco una lista de entidades
         List<EmployeeEntity> entities = employeeRepository.findAll();
-        //las convierto endto antes de devolverlas
         return employeeMapper.employeeEntityList2DTOList(entities);
     }
 
     public EmployeeDTO findById(@NotNull Long id) {
-        //entity puede ser opcional xq no sabemos si existe
         Optional<EmployeeEntity> entity = employeeRepository.findById(id);
-        //si no existe manda error
         if (!entity.isPresent()) {
             throw new ParamNotFound("Error: Invalid employee id");
         }
-        //sino lo convierte en DTO para enviar
         return employeeMapper.employeeEntity2DTO(entity.get());
     }
 
@@ -71,8 +63,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.deleteById(id);
     }
 
-    public List<EmployeeDTO> getByFilters(String firstName, String lastName, String dni, Long phone, String email, String file, List<ActivityEntity> activities){
-        EmployeeFilterDTO employeeFilterDTO = new EmployeeFilterDTO(firstName,lastName,dni,phone,email,file,activities);
+    public List<EmployeeDTO> getByFilters(String firstName, String lastName){
+        EmployeeFilterDTO employeeFilterDTO = new EmployeeFilterDTO(firstName,lastName);
         List<EmployeeEntity> entities = employeeRepository.findAll(employeeSpecification.getByFilters(employeeFilterDTO));
         List<EmployeeDTO> dtos = employeeMapper.employeeEntityList2DTOList(entities);
         return dtos;

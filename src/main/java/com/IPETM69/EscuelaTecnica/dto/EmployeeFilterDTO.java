@@ -17,10 +17,5 @@ public class EmployeeFilterDTO {
 
     private String firstName;
     private String lastName;
-    private String dni;
-    private Long phone;
-    private String email;
-    private String file;
-    private List<ActivityEntity> activities = new ArrayList<>();
 
 }

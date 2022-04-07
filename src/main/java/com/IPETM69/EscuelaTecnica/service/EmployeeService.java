@@ -9,10 +9,15 @@ import java.util.List;
 
 public interface EmployeeService {
     EmployeeDTO save(EmployeeDTO employeeDTO);
+
     List<EmployeeDTO> getAllEmployees();
+
     EmployeeDTO findById(@NotNull Long id);
+
     EmployeeDTO update(Long id, EmployeeDTO employeeDTO);
+
     void delete(@NonNull Long id);
-    List<EmployeeDTO> getByFilters(String firstName, String lastName, String dni, Long phone, String email, String file, List<ActivityEntity> activities);
+
+    List<EmployeeDTO> getByFilters(String firstName, String lastName);
 
 }
