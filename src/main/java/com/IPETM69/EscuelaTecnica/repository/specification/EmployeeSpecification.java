@@ -34,7 +34,7 @@ public class EmployeeSpecification {
                         )
                 );
             }
-
+/*
             if (StringUtils.hasLength(employeeFilterDTO.getDni())){
                 predicates.add(
                         criteriaBuilder.like(
@@ -74,7 +74,7 @@ public class EmployeeSpecification {
 
             //todo:specification de activities
             //nose como queda la relacion
-
+*/
             query.distinct(true);
 
             return criteriaBuilder.and(predicates.toArray(predicates.toArray(new Predicate[0])));
