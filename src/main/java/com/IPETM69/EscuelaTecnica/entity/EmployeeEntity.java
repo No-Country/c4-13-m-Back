@@ -22,22 +22,22 @@ public class EmployeeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="employees_id")
-    protected Long id;
+    private Long id;
 
     @Column(name = "first_name")
-    protected String firstName;
+    private String firstName;
 
     @Column(name = "last_name")
-    protected String lastName;
+    private String lastName;
 
-    protected String dni;
+    private String dni;
 
-    protected Long phone;
+    private Long phone;
 
-    protected String email;
+    private String email;
 
     @Column(name = "legajo")
-    protected String file;
+    private String file;
 
     @Column(name = "schedules")
     @OneToMany(cascade = CascadeType.ALL)
