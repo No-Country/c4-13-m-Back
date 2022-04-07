@@ -20,7 +20,7 @@ public class ScheduleDTO {
     private Long idClass;
     private List<TimeEntity> times;
     private Long idEmployee;
-    private ReplacementDTO replacement = new ReplacementDTO();
+    private ReplacementEntity replacement;
     private PositionEnum position;
     
 }
