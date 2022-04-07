@@ -5,15 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReplacementDTO {
-
-//    private String name;
-    private String checkIn;
-    private String checkOut;
-//    private String replaceWho;
-
+@Getter
+@Setter
+public class ActivityDTO {
+    
+    private Long id;
+    private String name;
+    private Boolean esCargo;
+    
 }

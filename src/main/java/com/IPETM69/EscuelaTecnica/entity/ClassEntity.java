@@ -22,6 +22,7 @@ public class ClassEntity {
     private String division;
     private ShiftEnum shift;
     private String department;
-    //private List <ActivityEntity> activities = new ArrayList<>();
+
+
 
 }

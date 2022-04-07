@@ -38,8 +38,8 @@ public class EmployeeEntity {
     @Column(name = "legajo")
     private String file;
 
-    @Column(name = "activities")
+    @Column(name = "schedules")
     @OneToMany(cascade = CascadeType.ALL)
-    private List<ActivityEntity> activities = new ArrayList<>();
+    protected List<ScheduleEntity> schedules = new ArrayList<>();
 
 }
