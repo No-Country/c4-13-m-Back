@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("classes")
+@RequestMapping("cursos")
 public class ClassController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class ClassController {
         return classService.create(classDTO);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/lista")
     @ResponseStatus(HttpStatus.OK)
     public List<ClassDTO> getAll() {
         return classService.getAllClasses();

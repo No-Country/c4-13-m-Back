@@ -29,7 +29,7 @@ public class ActivityController {
         return activityService.create(activityDTO);
     }
 
-    @GetMapping("/list")
+    @GetMapping("/lista")
     @ResponseStatus(HttpStatus.OK)
     public List<ActivityDTO> findAll() {
         return activityService.findAll();
