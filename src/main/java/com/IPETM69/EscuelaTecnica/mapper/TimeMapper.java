@@ -11,8 +11,10 @@ public class TimeMapper {
 
         TimeEntity entity = new TimeEntity();
         entity.setDay(dto.getDay());
-        entity.setTimeIn(dto.getTimeIn());
-        entity.setTimeOut(dto.getTimeOut());
+        entity.setHourIn(dto.getHourIn());
+        entity.setMinuteIn(dto.getMinuteIn());
+        entity.setHourOut(dto.getHourOut());
+        entity.setMinuteOut(dto.getMinuteOut());
         return entity;
 
     }
@@ -22,8 +24,10 @@ public class TimeMapper {
         TimeDTO dto = new TimeDTO();
         dto.setId(entity.getId());
         dto.setDay(entity.getDay());
-        dto.setTimeIn(entity.getTimeIn());
-        dto.setTimeOut(entity.getTimeOut());
+        dto.setHourIn(entity.getHourIn());
+        dto.setMinuteIn(entity.getMinuteIn());
+        dto.setHourOut(entity.getHourOut());
+        dto.setMinuteOut(entity.getMinuteOut());
         return dto;
 
     }
@@ -31,8 +35,10 @@ public class TimeMapper {
     public void timeEntityRefreshValues(TimeEntity entity, TimeDTO dto){
 
         entity.setDay(dto.getDay());
-        entity.setTimeIn(dto.getTimeIn());
-        entity.setTimeOut(dto.getTimeOut());
+        entity.setHourIn(dto.getHourIn());
+        entity.setMinuteIn(dto.getMinuteIn());
+        entity.setHourOut(dto.getHourOut());
+        entity.setMinuteOut(dto.getMinuteOut());
 
     }
 }
