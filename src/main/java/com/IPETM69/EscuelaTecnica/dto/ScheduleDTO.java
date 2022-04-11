@@ -18,9 +18,9 @@ public class ScheduleDTO {
     private Long id;
     private Long idActivity;
     private Long idClass;
-    private List<TimeEntity> times;
+    private List<TimeDTO> times;
     private Long idEmployee;
-    private ReplacementEntity replacement;
+    private ReplacementDTO replacement;
     private PositionEnum position;
     
 }

@@ -11,9 +11,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ReplacementDTO {
 
-//    private String name;
+    private Long id;
     private String checkIn;
     private String checkOut;
-//    private String replaceWho;
 
 }
