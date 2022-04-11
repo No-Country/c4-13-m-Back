@@ -12,8 +12,12 @@ public class TimeDTO {
 
     private DayEnum day;
 
-    private String timeIn;
+    private String hourIn;
 
-    private String timeOut;
+    private String minuteIn;
+
+    private String hourOut;
+
+    private String minuteOut;
 
 }
