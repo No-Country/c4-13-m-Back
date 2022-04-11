@@ -11,7 +11,7 @@ import javax.validation.Valid;
 
 
 @RestController
-@RequestMapping("/times")
+@RequestMapping("/horarios")
 public class TimeController {
 
     @Autowired

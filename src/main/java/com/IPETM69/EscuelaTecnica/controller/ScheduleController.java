@@ -29,7 +29,7 @@ public class ScheduleController {
         return scheduleService.create(scheduleDTO);
     }
 
-    @GetMapping("/list")
+    @GetMapping("/lista")
     @ResponseStatus(HttpStatus.OK)
     public List<ScheduleDTO> findAll() {
         return scheduleService.findAll();

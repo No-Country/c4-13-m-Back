@@ -25,7 +25,7 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedEmployee);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/lista")
     @ResponseStatus(HttpStatus.OK)
     public List<EmployeeDTO> getAll(){
         return employeeService.getAllEmployees();

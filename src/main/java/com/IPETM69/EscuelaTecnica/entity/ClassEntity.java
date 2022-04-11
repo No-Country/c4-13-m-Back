@@ -20,6 +20,7 @@ public class ClassEntity {
     private Long id;
     private String grade;
     private String division;
+    @Enumerated(EnumType.STRING)
     private ShiftEnum shift;
     private String department;
 

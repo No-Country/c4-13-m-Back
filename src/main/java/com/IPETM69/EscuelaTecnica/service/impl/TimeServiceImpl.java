@@ -9,6 +9,8 @@ import com.IPETM69.EscuelaTecnica.service.TimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,6 +28,15 @@ public class TimeServiceImpl implements TimeService {
         TimeEntity entitySaved = timeRepository.save(entity);
         TimeDTO result = timeMapper.timeEntity2DTO(entitySaved);
         return result;
+
+    }
+
+    public List<TimeDTO> saveList(List <TimeDTO> dtos) {
+        List<TimeDTO> times = new ArrayList<>();
+        for (TimeDTO dto : dtos){
+            times.add(save(dto));
+        }
+        return times;
 
     }
 
