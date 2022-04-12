@@ -69,5 +69,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<EmployeeDTO> dtos = employeeMapper.employeeEntityList2DTOList(entities);
         return dtos;
     }
+    
+    @Override
+    public List<EmployeeDTO> findByName(String name){
+        List<EmployeeEntity> entities = employeeRepository.findByName("%"+name+"%");
+        return employeeMapper.employeeEntityList2DTOList(entities);
+    }
+   
 
 }

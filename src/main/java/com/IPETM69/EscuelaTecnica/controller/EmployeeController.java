@@ -30,6 +30,12 @@ public class EmployeeController {
     public List<EmployeeDTO> getAll(){
         return employeeService.getAllEmployees();
     }
+    
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<EmployeeDTO> getByName(@RequestParam(required = false) String name){
+        return employeeService.findByName(name);
+    }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)

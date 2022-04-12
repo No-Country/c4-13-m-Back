@@ -17,6 +17,8 @@ public interface EmployeeService {
     EmployeeDTO update(Long id, EmployeeDTO employeeDTO);
 
     void delete(@NonNull Long id);
+    
+    List<EmployeeDTO> findByName(String name);
 
     List<EmployeeDTO> getByFilters(String firstName, String lastName);
 
