@@ -1,7 +1,6 @@
 package com.IPETM69.EscuelaTecnica.controller;
 
 import com.IPETM69.EscuelaTecnica.dto.EmployeeDTO;
-import com.IPETM69.EscuelaTecnica.entity.ActivityEntity;
 import com.IPETM69.EscuelaTecnica.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,14 +53,5 @@ public class EmployeeController {
     public void delete(@PathVariable Long id){
         employeeService.delete(id);
     }
-
-//    @GetMapping
-//    public ResponseEntity<List<EmployeeDTO>> getDetailsByFilter(
-//            @RequestParam(required = false) String firstName,
-//            @RequestParam(required = false) String lastName
-//    ){
-//        List<EmployeeDTO> employeeDTOS = employeeService.getByFilters(firstName,lastName);
-//        return ResponseEntity.ok(employeeDTOS);
-//    }
 
 }

@@ -1,12 +1,10 @@
 package com.IPETM69.EscuelaTecnica.service.impl;
 
 import com.IPETM69.EscuelaTecnica.dto.EmployeeDTO;
-import com.IPETM69.EscuelaTecnica.dto.EmployeeFilterDTO;
 import com.IPETM69.EscuelaTecnica.entity.EmployeeEntity;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
 import com.IPETM69.EscuelaTecnica.mapper.EmployeeMapper;
 import com.IPETM69.EscuelaTecnica.repository.EmployeeRepository;
-import com.IPETM69.EscuelaTecnica.repository.specification.EmployeeSpecification;
 import com.IPETM69.EscuelaTecnica.service.EmployeeService;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +22,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
-
-//    @Autowired
-//    private EmployeeSpecification employeeSpecification;
 
     public EmployeeDTO save(EmployeeDTO employeeDTO){
         EmployeeEntity entity = employeeMapper.employeeDTO2Entity(employeeDTO);
@@ -61,14 +56,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void delete(@NonNull Long id) {
         employeeRepository.deleteById(id);
     }
-
-//    public List<EmployeeDTO> getByFilters(String firstName, String lastName){
-//        EmployeeFilterDTO employeeFilterDTO = new EmployeeFilterDTO(firstName,lastName);
-//        List<EmployeeEntity> entities = employeeRepository.findAll(employeeSpecification.getByFilters(employeeFilterDTO));
-//        List<EmployeeDTO> dtos = employeeMapper.employeeEntityList2DTOList(entities);
-//        return dtos;
-//    }
-    
     
     @Override
     public List<EmployeeDTO> findByName(String name){
