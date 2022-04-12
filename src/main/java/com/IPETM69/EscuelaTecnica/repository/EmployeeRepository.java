@@ -11,8 +11,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity,Long> {
     
-    @Query("SELECT e FROM employees e WHERE e.first_name like :name;")
-    public List<EmployeeEntity> findByName(@Param("name") String name);
+    @Query(value = "SELECT * FROM employees WHERE LOWER(first_name) LIKE (:name)" +
+            "or LOWER(last_name) LIKE (:name)", nativeQuery = true)
+    List<EmployeeEntity> findByName(@Param("name") String name);
 
-    public List<EmployeeEntity> findAll(Specification<EmployeeEntity> specification);
+//    List<EmployeeEntity> findAll(Specification<EmployeeEntity> specification);
 }

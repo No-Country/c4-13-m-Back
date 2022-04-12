@@ -55,13 +55,13 @@ public class EmployeeController {
         employeeService.delete(id);
     }
 
-    @GetMapping
-    public ResponseEntity<List<EmployeeDTO>> getDetailsByFilter(
-            @RequestParam(required = false) String firstName,
-            @RequestParam(required = false) String lastName
-    ){
-        List<EmployeeDTO> employeeDTOS = employeeService.getByFilters(firstName,lastName);
-        return ResponseEntity.ok(employeeDTOS);
-    }
+//    @GetMapping
+//    public ResponseEntity<List<EmployeeDTO>> getDetailsByFilter(
+//            @RequestParam(required = false) String firstName,
+//            @RequestParam(required = false) String lastName
+//    ){
+//        List<EmployeeDTO> employeeDTOS = employeeService.getByFilters(firstName,lastName);
+//        return ResponseEntity.ok(employeeDTOS);
+//    }
 
 }

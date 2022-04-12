@@ -1,11 +1,11 @@
 package com.IPETM69.EscuelaTecnica.service;
 
 import com.IPETM69.EscuelaTecnica.dto.EmployeeDTO;
-import com.IPETM69.EscuelaTecnica.entity.ActivityEntity;
 import lombok.NonNull;
-
 import javax.validation.constraints.NotNull;
 import java.util.List;
+
+
 
 public interface EmployeeService {
     EmployeeDTO save(EmployeeDTO employeeDTO);
@@ -20,6 +20,6 @@ public interface EmployeeService {
     
     List<EmployeeDTO> findByName(String name);
 
-    List<EmployeeDTO> getByFilters(String firstName, String lastName);
+//    List<EmployeeDTO> getByFilters(String firstName, String lastName);
 
 }
