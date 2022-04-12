@@ -3,15 +3,8 @@ package com.IPETM69.EscuelaTecnica.entity;
 import com.IPETM69.EscuelaTecnica.enumeration.PositionEnum;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,10 +23,10 @@ public class ScheduleEntity implements Serializable {
     private Long id;
     private Long idActivity;
     private Long idClass;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<TimeEntity> times;
     private Long idEmployee;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private ReplacementEntity replacement;
     @Enumerated(EnumType.STRING)
     private PositionEnum position;

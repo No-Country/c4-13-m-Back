@@ -1,15 +1,20 @@
 package com.IPETM69.EscuelaTecnica.service;
 
 
-import com.IPETM69.EscuelaTecnica.dto.TimeDTO;
+import com.IPETM69.EscuelaTecnica.dto.request.TimeDTO;
+import com.IPETM69.EscuelaTecnica.dto.response.TimePrintDTO;
+
+import java.util.List;
 
 public interface TimeService {
 
-    TimeDTO save(TimeDTO dto);
+    TimePrintDTO save(TimeDTO dto);
 
-    TimeDTO findTimeById(Long Id);
+    List<TimePrintDTO> saveList(List <TimeDTO> dtos);
 
-    TimeDTO update(Long id, TimeDTO dto);
+//    TimeDTO findTimeById(Long Id);
+
+    TimePrintDTO update(Long id, TimeDTO dto);
 
     void delete(Long id);
 

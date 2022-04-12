@@ -25,8 +25,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    @Autowired
-    private EmployeeSpecification employeeSpecification;
+//    @Autowired
+//    private EmployeeSpecification employeeSpecification;
 
     public EmployeeDTO save(EmployeeDTO employeeDTO){
         EmployeeEntity entity = employeeMapper.employeeDTO2Entity(employeeDTO);
@@ -62,11 +62,19 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.deleteById(id);
     }
 
-    public List<EmployeeDTO> getByFilters(String firstName, String lastName){
-        EmployeeFilterDTO employeeFilterDTO = new EmployeeFilterDTO(firstName,lastName);
-        List<EmployeeEntity> entities = employeeRepository.findAll(employeeSpecification.getByFilters(employeeFilterDTO));
-        List<EmployeeDTO> dtos = employeeMapper.employeeEntityList2DTOList(entities);
-        return dtos;
+//    public List<EmployeeDTO> getByFilters(String firstName, String lastName){
+//        EmployeeFilterDTO employeeFilterDTO = new EmployeeFilterDTO(firstName,lastName);
+//        List<EmployeeEntity> entities = employeeRepository.findAll(employeeSpecification.getByFilters(employeeFilterDTO));
+//        List<EmployeeDTO> dtos = employeeMapper.employeeEntityList2DTOList(entities);
+//        return dtos;
+//    }
+    
+    
+    @Override
+    public List<EmployeeDTO> findByName(String name){
+        List<EmployeeEntity> entities = employeeRepository.findByName("%"+name+"%".toLowerCase());
+        return employeeMapper.employeeEntityList2DTOList(entities);
     }
+   
 
 }
