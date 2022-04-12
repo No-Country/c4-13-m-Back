@@ -7,10 +7,11 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
-@Entity
+
 @Getter
 @Setter
 @ToString
+@Entity
 @Table(name = "times")
 public class TimeEntity {
 

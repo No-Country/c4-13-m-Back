@@ -30,6 +30,12 @@ public class EmployeeController {
     public List<EmployeeDTO> getAll(){
         return employeeService.getAllEmployees();
     }
+    
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<EmployeeDTO> getByName(@RequestParam(required = false) String name){
+        return employeeService.findByName(name);
+    }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
@@ -49,13 +55,13 @@ public class EmployeeController {
         employeeService.delete(id);
     }
 
-    @GetMapping
-    public ResponseEntity<List<EmployeeDTO>> getDetailsByFilter(
-            @RequestParam(required = false) String firstName,
-            @RequestParam(required = false) String lastName
-    ){
-        List<EmployeeDTO> employeeDTOS = employeeService.getByFilters(firstName,lastName);
-        return ResponseEntity.ok(employeeDTOS);
-    }
+//    @GetMapping
+//    public ResponseEntity<List<EmployeeDTO>> getDetailsByFilter(
+//            @RequestParam(required = false) String firstName,
+//            @RequestParam(required = false) String lastName
+//    ){
+//        List<EmployeeDTO> employeeDTOS = employeeService.getByFilters(firstName,lastName);
+//        return ResponseEntity.ok(employeeDTOS);
+//    }
 
 }
