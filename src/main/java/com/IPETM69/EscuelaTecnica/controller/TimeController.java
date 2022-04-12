@@ -1,6 +1,7 @@
 package com.IPETM69.EscuelaTecnica.controller;
 
 import com.IPETM69.EscuelaTecnica.dto.TimeDTO;
+import com.IPETM69.EscuelaTecnica.dto.TimePrintDTO;
 import com.IPETM69.EscuelaTecnica.service.TimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,26 +18,26 @@ public class TimeController {
     @Autowired
     private TimeService timeService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<TimeDTO> getTimeById(@PathVariable Long id){
-
-        TimeDTO timeDTO = timeService.findTimeById(id);
-        return ResponseEntity.ok().body(timeDTO);
-
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<TimeDTO> getTimeById(@PathVariable Long id){
+//
+//        TimeDTO timeDTO = timeService.findTimeById(id);
+//        return ResponseEntity.ok().body(timeDTO);
+//
+//    }
 
     @PostMapping
-    public ResponseEntity<TimeDTO> create(@Valid @RequestBody TimeDTO dto){
+    public ResponseEntity<TimePrintDTO> create(@Valid @RequestBody TimeDTO dto){
 
-        TimeDTO timeDTO = timeService.save(dto);
+        TimePrintDTO timeDTO = timeService.save(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(timeDTO);
 
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TimeDTO> update(@Valid @PathVariable Long id, @RequestBody TimeDTO dto){
+    public ResponseEntity<TimePrintDTO> update(@Valid @PathVariable Long id, @RequestBody TimeDTO dto){
 
-        TimeDTO timeDTO = timeService.update(id, dto);
+        TimePrintDTO timeDTO = timeService.update(id, dto);
         return ResponseEntity.ok().body(timeDTO);
 
     }

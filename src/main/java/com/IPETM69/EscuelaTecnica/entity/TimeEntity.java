@@ -21,16 +21,10 @@ public class TimeEntity {
     @Enumerated(EnumType.STRING)
     private DayEnum day;
 
-    @Column(name = "hour_in")
-    private String hourIn;
+    @Column(name = "time_in")
+    private String timeIn;
 
-    @Column(name = "minute_in")
-    private String minuteIn;
-
-    @Column(name = "hour_out")
-    private String hourOut;
-
-    @Column(name = "minute_out")
-    private String minuteOut;
+    @Column(name = "time_out")
+    private String timeOut;
 
 }
