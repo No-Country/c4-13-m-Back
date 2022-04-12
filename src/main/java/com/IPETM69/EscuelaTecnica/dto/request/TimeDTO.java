@@ -1,4 +1,4 @@
-package com.IPETM69.EscuelaTecnica.dto;
+package com.IPETM69.EscuelaTecnica.dto.request;
 
 import com.IPETM69.EscuelaTecnica.enumeration.DayEnum;
 import lombok.Getter;

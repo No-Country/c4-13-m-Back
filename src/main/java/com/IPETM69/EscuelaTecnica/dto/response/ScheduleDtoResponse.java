@@ -1,7 +1,6 @@
-package com.IPETM69.EscuelaTecnica.dto;
+package com.IPETM69.EscuelaTecnica.dto.response;
 
-import com.IPETM69.EscuelaTecnica.entity.ReplacementEntity;
-import com.IPETM69.EscuelaTecnica.entity.TimeEntity;
+import com.IPETM69.EscuelaTecnica.dto.ReplacementDTO;
 import com.IPETM69.EscuelaTecnica.enumeration.PositionEnum;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -13,12 +12,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ScheduleDTO {
+public class ScheduleDtoResponse {
     
     private Long id;
     private Long idActivity;
     private Long idClass;
-    private List<TimeDTO> times;
+    private List<TimePrintDTO> times;
     private Long idEmployee;
     private ReplacementDTO replacement;
     private PositionEnum position;

@@ -1,6 +1,7 @@
 package com.IPETM69.EscuelaTecnica.service.impl;
 
-import com.IPETM69.EscuelaTecnica.dto.TimeDTO;
+import com.IPETM69.EscuelaTecnica.dto.request.TimeDTO;
+import com.IPETM69.EscuelaTecnica.dto.response.TimePrintDTO;
 import com.IPETM69.EscuelaTecnica.entity.TimeEntity;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
 import com.IPETM69.EscuelaTecnica.mapper.TimeMapper;
@@ -23,16 +24,16 @@ public class TimeServiceImpl implements TimeService {
     private TimeMapper timeMapper;
 
     @Override
-    public TimeDTO save(TimeDTO dto) {
+    public TimePrintDTO save(TimeDTO dto) {
         TimeEntity entity = timeMapper.timeDTO2Entity(dto);
         TimeEntity entitySaved = timeRepository.save(entity);
-        TimeDTO result = timeMapper.timeEntity2DTO(entitySaved);
+        TimePrintDTO result = timeMapper.timeEntity2DTO(entitySaved);
         return result;
 
     }
 
-    public List<TimeDTO> saveList(List <TimeDTO> dtos) {
-        List<TimeDTO> times = new ArrayList<>();
+    public List<TimePrintDTO> saveList(List <TimeDTO> dtos) {
+        List<TimePrintDTO> times = new ArrayList<>();
         for (TimeDTO dto : dtos){
             times.add(save(dto));
         }
@@ -40,27 +41,28 @@ public class TimeServiceImpl implements TimeService {
 
     }
 
+//    @Override
+//    public TimeDTO findTimeById(Long id) {
+//
+//        Optional<TimeEntity> entity = timeRepository.findById(id);
+//        if (!entity.isPresent()){
+//            throw new ParamNotFound("ID");
+//        }
+//        TimeDTO result = timeMapper.timeEntity2DTO(entity.get());
+//        return result;
+//
+//    }
+
+
     @Override
-    public TimeDTO findTimeById(Long id) {
-
-        Optional<TimeEntity> entity = timeRepository.findById(id);
-        if (!entity.isPresent()){
-            throw new ParamNotFound("ID");
-        }
-        TimeDTO result = timeMapper.timeEntity2DTO(entity.get());
-        return result;
-
-    }
-
-    @Override
-    public TimeDTO update(Long id, TimeDTO dto) {
+    public TimePrintDTO update(Long id, TimeDTO dto) {
         Optional<TimeEntity> entity = timeRepository.findById(id);
         if(!entity.isPresent()){
             throw new ParamNotFound("ID");
         }
         timeMapper.timeEntityRefreshValues(entity.get(), dto);
         TimeEntity entitySaved = timeRepository.save(entity.get());
-        TimeDTO result = timeMapper.timeEntity2DTO(entitySaved);
+        TimePrintDTO result = timeMapper.timeEntity2DTO(entitySaved);
         return result;    }
 
 
