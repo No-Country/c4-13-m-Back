@@ -2,7 +2,6 @@ package com.IPETM69.EscuelaTecnica.service.impl;
 
 import com.IPETM69.EscuelaTecnica.dto.EmployeeDTO;
 import com.IPETM69.EscuelaTecnica.dto.EmployeeFilterDTO;
-import com.IPETM69.EscuelaTecnica.entity.ActivityEntity;
 import com.IPETM69.EscuelaTecnica.entity.EmployeeEntity;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
 import com.IPETM69.EscuelaTecnica.mapper.EmployeeMapper;

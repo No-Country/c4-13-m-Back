@@ -1,7 +1,6 @@
 package com.IPETM69.EscuelaTecnica.service;
 
 import com.IPETM69.EscuelaTecnica.dto.EmployeeDTO;
-import com.IPETM69.EscuelaTecnica.entity.ActivityEntity;
 import lombok.NonNull;
 
 import javax.validation.constraints.NotNull;
