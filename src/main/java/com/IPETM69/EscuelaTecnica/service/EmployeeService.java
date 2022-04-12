@@ -20,6 +20,4 @@ public interface EmployeeService {
     
     List<EmployeeDTO> findByName(String name);
 
-//    List<EmployeeDTO> getByFilters(String firstName, String lastName);
-
 }
