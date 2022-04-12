@@ -1,6 +1,7 @@
 package com.IPETM69.EscuelaTecnica.controller;
 
-import com.IPETM69.EscuelaTecnica.dto.ScheduleDTO;
+import com.IPETM69.EscuelaTecnica.dto.request.ScheduleDtoRequest;
+import com.IPETM69.EscuelaTecnica.dto.response.ScheduleDtoResponse;
 import com.IPETM69.EscuelaTecnica.service.ScheduleService;
 import java.util.List;
 import javax.validation.Valid;
@@ -25,19 +26,19 @@ public class ScheduleController {
     
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ScheduleDTO create(@Valid @RequestBody ScheduleDTO scheduleDTO){
-        return scheduleService.create(scheduleDTO);
+    public ScheduleDtoResponse create(@Valid @RequestBody ScheduleDtoRequest scheduleDtoRequest){
+        return scheduleService.create(scheduleDtoRequest);
     }
 
     @GetMapping("/lista")
     @ResponseStatus(HttpStatus.OK)
-    public List<ScheduleDTO> findAll() {
+    public List<ScheduleDtoResponse> findAll() {
         return scheduleService.findAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ScheduleDTO findById(@RequestParam Long id) {
+    public ScheduleDtoResponse findById(@RequestParam Long id) {
         return scheduleService.findById(id);
     }
 
@@ -49,8 +50,8 @@ public class ScheduleController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ScheduleDTO update(@RequestParam Long id, @Valid @RequestBody ScheduleDTO scheduleDTO){
-        return scheduleService.update(id, scheduleDTO);
+    public ScheduleDtoResponse update(@RequestParam Long id, @Valid @RequestBody ScheduleDtoRequest scheduleDtoRequest){
+        return scheduleService.update(id, scheduleDtoRequest);
     }
     
 }

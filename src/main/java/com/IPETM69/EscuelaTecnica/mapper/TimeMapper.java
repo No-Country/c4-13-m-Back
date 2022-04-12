@@ -1,6 +1,7 @@
 package com.IPETM69.EscuelaTecnica.mapper;
 
-import com.IPETM69.EscuelaTecnica.dto.TimeDTO;
+import com.IPETM69.EscuelaTecnica.dto.request.TimeDTO;
+import com.IPETM69.EscuelaTecnica.dto.response.TimePrintDTO;
 import com.IPETM69.EscuelaTecnica.entity.TimeEntity;
 import org.springframework.stereotype.Component;
 
@@ -14,23 +15,19 @@ public class TimeMapper {
 
         TimeEntity entity = new TimeEntity();
         entity.setDay(dto.getDay());
-        entity.setHourIn(dto.getHourIn());
-        entity.setMinuteIn(dto.getMinuteIn());
-        entity.setHourOut(dto.getHourOut());
-        entity.setMinuteOut(dto.getMinuteOut());
+        entity.setTimeIn(dto.getHourIn() + ":" + dto.getMinuteIn());
+        entity.setTimeOut(dto.getHourOut() + ":" + dto.getMinuteOut());
         return entity;
 
     }
 
-    public TimeDTO timeEntity2DTO (TimeEntity entity){
+    public TimePrintDTO timeEntity2DTO(TimeEntity entity){
 
-        TimeDTO dto = new TimeDTO();
+        TimePrintDTO dto = new TimePrintDTO();
         dto.setId(entity.getId());
         dto.setDay(entity.getDay());
-        dto.setHourIn(entity.getHourIn());
-        dto.setMinuteIn(entity.getMinuteIn());
-        dto.setHourOut(entity.getHourOut());
-        dto.setMinuteOut(entity.getMinuteOut());
+        dto.setTimeIn(entity.getTimeIn());
+        dto.setTimeOut(entity.getTimeOut());
         return dto;
 
     }
@@ -44,8 +41,8 @@ public class TimeMapper {
 
     }
 
-    public List<TimeDTO> timeEntityList2DTOList(List<TimeEntity> entities) {
-        List<TimeDTO> dtos = new ArrayList<>();
+    public List<TimePrintDTO> timeEntityList2DTOList(List<TimeEntity> entities) {
+        List<TimePrintDTO> dtos = new ArrayList<>();
         for (TimeEntity entity : entities) {
             dtos.add(timeEntity2DTO(entity));
         }
@@ -55,10 +52,8 @@ public class TimeMapper {
     public void timeEntityRefreshValues(TimeEntity entity, TimeDTO dto){
 
         entity.setDay(dto.getDay());
-        entity.setHourIn(dto.getHourIn());
-        entity.setMinuteIn(dto.getMinuteIn());
-        entity.setHourOut(dto.getHourOut());
-        entity.setMinuteOut(dto.getMinuteOut());
+        entity.setTimeIn(dto.getHourIn() + ":" + dto.getMinuteIn());
+        entity.setTimeOut(dto.getHourOut() + ":" + dto.getMinuteOut());
 
     }
 }
