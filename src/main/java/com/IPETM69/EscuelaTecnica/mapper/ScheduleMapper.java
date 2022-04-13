@@ -24,8 +24,10 @@ public class ScheduleMapper {
         scheduleEntity.setIdClass(scheduleDtoRequest.getIdClass());
         scheduleEntity.setTimes(timeMapper.timeDTOList2EntityList(scheduleDtoRequest.getTimes()));
         scheduleEntity.setIdEmployee(scheduleDtoRequest.getIdEmployee());
-        scheduleEntity.setReplacement(replacementMapper.replacementDTO2Entity(scheduleDtoRequest.getReplacement()));
         scheduleEntity.setPosition(scheduleDtoRequest.getPosition());
+        if(scheduleDtoRequest.getReplacement() !=null){
+            scheduleEntity.setReplacement(replacementMapper.replacementDTO2Entity(scheduleDtoRequest.getReplacement()));
+        }
 
         return scheduleEntity;
     }
@@ -37,8 +39,10 @@ public class ScheduleMapper {
         scheduleDtoResponse.setIdClass(scheduleSaved.getIdClass());
         scheduleDtoResponse.setTimes(timeMapper.timeEntityList2DTOList(scheduleSaved.getTimes()));
         scheduleDtoResponse.setIdEmployee(scheduleSaved.getIdEmployee());
-        scheduleDtoResponse.setReplacement(replacementMapper.replacementEntity2DTO(scheduleSaved.getReplacement()));
         scheduleDtoResponse.setPosition(scheduleSaved.getPosition());
+        if (scheduleSaved.getReplacement() != null){
+            scheduleDtoResponse.setReplacement(replacementMapper.replacementEntity2DTO(scheduleSaved.getReplacement()));
+        }
         return scheduleDtoResponse;
     }
 
@@ -47,8 +51,10 @@ public class ScheduleMapper {
         scheduleEntity.setIdClass(scheduleDtoRequest.getIdClass());
         scheduleEntity.setTimes(timeMapper.timeDTOList2EntityList(scheduleDtoRequest.getTimes()));
         scheduleEntity.setIdEmployee(scheduleDtoRequest.getIdEmployee());
-        scheduleEntity.setReplacement(replacementMapper.replacementDTO2Entity(scheduleDtoRequest.getReplacement()));
         scheduleEntity.setPosition(scheduleDtoRequest.getPosition());
+        if (scheduleDtoRequest.getReplacement() != null){
+            scheduleEntity.setReplacement(replacementMapper.replacementDTO2Entity(scheduleDtoRequest.getReplacement()));
+        }
     }
 
     public List<ScheduleDtoResponse> scheduleEntityList2DTOList(List<ScheduleEntity> entities) {
