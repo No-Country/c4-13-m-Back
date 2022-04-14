@@ -1,7 +1,6 @@
 package com.IPETM69.EscuelaTecnica.dto.request;
 
 import com.IPETM69.EscuelaTecnica.dto.ReplacementDTO;
-import com.IPETM69.EscuelaTecnica.dto.response.TimePrintDTO;
 import com.IPETM69.EscuelaTecnica.enumeration.PositionEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

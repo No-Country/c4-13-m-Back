@@ -2,6 +2,7 @@ package com.IPETM69.EscuelaTecnica.mapper;
 
 import com.IPETM69.EscuelaTecnica.dto.EmployeeDTO;
 import com.IPETM69.EscuelaTecnica.entity.EmployeeEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,6 +11,9 @@ import java.util.List;
 
 @Component
 public class EmployeeMapper {
+
+    @Autowired
+    ScheduleMapper scheduleMapper;
 
     public EmployeeEntity employeeDTO2Entity (EmployeeDTO employeeDTO){
         EmployeeEntity entity = new EmployeeEntity();
@@ -20,8 +24,6 @@ public class EmployeeMapper {
         entity.setPhone(employeeDTO.getPhone());
         entity.setEmail(employeeDTO.getEmail());
         entity.setFile(employeeDTO.getFile());
-        entity.setSchedules(employeeDTO.getSchedules());
-
         return entity;
     }
 
@@ -35,7 +37,7 @@ public class EmployeeMapper {
         dto.setPhone(entity.getPhone());
         dto.setEmail(entity.getEmail());
         dto.setFile(entity.getFile());
-        dto.setSchedules(entity.getSchedules());
+        dto.setSchedules(scheduleMapper.scheduleEntityList2DTOList(entity.getSchedules()));
 
         return dto;
     }
@@ -55,7 +57,6 @@ public class EmployeeMapper {
         employeeEntity.setPhone(employeeDTO.getPhone());
         employeeEntity.setEmail(employeeDTO.getEmail());
         employeeEntity.setFile(employeeDTO.getFile());
-        employeeEntity.setSchedules(employeeDTO.getSchedules());
     }
 
 
