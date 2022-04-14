@@ -1,5 +1,6 @@
 package com.IPETM69.EscuelaTecnica.dto;
 
+import com.IPETM69.EscuelaTecnica.dto.response.ScheduleDtoResponse;
 import com.IPETM69.EscuelaTecnica.entity.ScheduleEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,6 @@ public class EmployeeDTO {
     private Long phone;
     private String email;
     private String file;
-    private List<ScheduleEntity> schedules = new ArrayList<>();
+    private List<ScheduleDtoResponse> schedules = new ArrayList<>();
 
 }

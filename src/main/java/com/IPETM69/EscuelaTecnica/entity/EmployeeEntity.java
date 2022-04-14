@@ -39,8 +39,7 @@ public class EmployeeEntity implements Serializable {
     @Column(name = "legajo")
     private String file;
 
-    @Column(name = "schedules")
-    @OneToMany(cascade = CascadeType.ALL)
-    protected List<ScheduleEntity> schedules = new ArrayList<>();
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    private List<ScheduleEntity> schedules = new ArrayList<>();
 
 }

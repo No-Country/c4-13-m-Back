@@ -21,6 +21,16 @@ public class TimeMapper {
 
     }
 
+    public TimeEntity timePrintDTO2Entity (TimePrintDTO dto){
+
+        TimeEntity entity = new TimeEntity();
+        entity.setDay(dto.getDay());
+        entity.setTimeIn(dto.getTimeIn());
+        entity.setTimeOut(dto.getTimeOut());
+        return entity;
+
+    }
+
     public TimePrintDTO timeEntity2DTO(TimeEntity entity){
 
         TimePrintDTO dto = new TimePrintDTO();
@@ -36,6 +46,15 @@ public class TimeMapper {
         List<TimeEntity> timeEntities = new ArrayList<>();
         for (TimeDTO dto : dtos){
             timeEntities.add(timeDTO2Entity(dto));
+        }
+        return timeEntities;
+
+    }
+
+    public List<TimeEntity> timePrintDTOList2EntityList(List<TimePrintDTO> dtos) {
+        List<TimeEntity> timeEntities = new ArrayList<>();
+        for (TimePrintDTO dto : dtos){
+            timeEntities.add(timePrintDTO2Entity(dto));
         }
         return timeEntities;
 
