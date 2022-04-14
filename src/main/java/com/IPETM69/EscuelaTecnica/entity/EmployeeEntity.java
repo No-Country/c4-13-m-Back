@@ -41,6 +41,6 @@ public class EmployeeEntity implements Serializable {
 
     @Column(name = "schedules")
     @OneToMany(cascade = CascadeType.ALL)
-    protected List<ScheduleEntity> schedules = new ArrayList<>();
+    private List<ScheduleEntity> schedules = new ArrayList<>();
 
 }

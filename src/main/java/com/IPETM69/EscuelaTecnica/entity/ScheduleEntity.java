@@ -25,6 +25,8 @@ public class ScheduleEntity implements Serializable {
     private Long idClass;
     @OneToMany(cascade = CascadeType.ALL)
     private List<TimeEntity> times;
+
+
     private Long idEmployee;
     @OneToOne(cascade = CascadeType.ALL)
     private ReplacementEntity replacement;
