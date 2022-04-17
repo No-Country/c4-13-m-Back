@@ -8,17 +8,17 @@ import com.IPETM69.EscuelaTecnica.entity.ScheduleEntity;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
 import com.IPETM69.EscuelaTecnica.mapper.ScheduleMapper;
 import com.IPETM69.EscuelaTecnica.repository.ScheduleRepository;
+
 import com.IPETM69.EscuelaTecnica.repository.specification.ScheduleSpecification;
 import com.IPETM69.EscuelaTecnica.service.ScheduleService;
-import java.util.List;
-import java.util.Optional;
-import javax.transaction.Transactional;
-
 import com.IPETM69.EscuelaTecnica.service.TimeService;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
