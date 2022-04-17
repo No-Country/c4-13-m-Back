@@ -1,6 +1,8 @@
 package com.IPETM69.EscuelaTecnica.mapper;
 
+import com.IPETM69.EscuelaTecnica.dto.request.FilterDTORequest;
 import com.IPETM69.EscuelaTecnica.dto.request.ScheduleDtoRequest;
+import com.IPETM69.EscuelaTecnica.dto.response.FilterDTOResponse;
 import com.IPETM69.EscuelaTecnica.dto.response.ScheduleDtoResponse;
 import com.IPETM69.EscuelaTecnica.entity.ScheduleEntity;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
@@ -96,6 +98,28 @@ public class ScheduleMapper {
             entities.add(scheduleResponseDTO2Entity(dto));
         }
         return entities;
+    }
+
+    public List<FilterDTOResponse> filterEntityList2DTOList(List<ScheduleEntity> entities) {
+        List<FilterDTOResponse> dtos = new ArrayList<>();
+        for (ScheduleEntity entity : entities) {
+            dtos.add(filterEntity2DTO(entity));
+        }
+        return dtos;
+    }
+
+    public FilterDTOResponse filterEntity2DTO(ScheduleEntity scheduleSaved) {
+        ScheduleDtoResponse scheduleDtoResponse = new ScheduleDtoResponse();
+        scheduleDtoResponse.setId(scheduleSaved.getId());
+        scheduleDtoResponse.setIdActivity(scheduleSaved.getActivity().getId());
+        scheduleDtoResponse.setIdClass(scheduleSaved.getClassEntity().getId());
+        scheduleDtoResponse.setTimes(timeMapper.timeEntityList2DTOList(scheduleSaved.getTimes()));
+        scheduleDtoResponse.setIdEmployee(scheduleSaved.getEmployee().getId());
+        scheduleDtoResponse.setPosition(scheduleSaved.getPosition());
+        if (scheduleSaved.getReplacement() != null){
+            scheduleDtoResponse.setReplacement(replacementMapper.replacementEntity2DTO(scheduleSaved.getReplacement()));
+        }
+        return scheduleDtoResponse;
     }
 
 }

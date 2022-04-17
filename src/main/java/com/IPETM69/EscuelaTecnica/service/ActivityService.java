@@ -14,8 +14,5 @@ public interface ActivityService {
     public void delete(@NonNull Long id) throws ActivityNotFoundException;
     public ActivityDTO findById(Long id) throws ActivityNotFoundException;  
     public List<ActivityDTO> findAll();
-    List<FilterDTOResponse> getByFilter(String activity, List<String> grade, String department);
-    
-    
-    
+
 }

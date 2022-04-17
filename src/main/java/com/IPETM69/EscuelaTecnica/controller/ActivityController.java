@@ -55,14 +55,4 @@ public class ActivityController {
         return activityService.update(id, activityDTO);
     }
 
-    @GetMapping
-    public ResponseEntity<List<FilterDTOResponse>> getDetailsByFilter(
-            @RequestParam (required = false) String activity,
-            @RequestParam (required = false) List<String> grade,
-            @RequestParam (required = false) String department
-    ){
-        List<FilterDTOResponse> detailsByFilter = activityService.getByFilter(activity,grade,department);
-        return ResponseEntity.ok(detailsByFilter);
-    }
-
 }

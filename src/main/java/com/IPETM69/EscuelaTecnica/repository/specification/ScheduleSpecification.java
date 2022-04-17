@@ -2,6 +2,7 @@ package com.IPETM69.EscuelaTecnica.repository.specification;
 
 import com.IPETM69.EscuelaTecnica.dto.request.FilterDTORequest;
 import com.IPETM69.EscuelaTecnica.entity.ActivityEntity;
+import com.IPETM69.EscuelaTecnica.entity.ClassEntity;
 import com.IPETM69.EscuelaTecnica.entity.ScheduleEntity;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
@@ -15,9 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ActivitySpecification {
+public class ScheduleSpecification {
 
-    public Specification<ActivityEntity> getByFilters(FilterDTORequest filterDTO){
+    public Specification<ScheduleEntity> getByFilters(FilterDTORequest filterDTO){
         return (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
 
@@ -28,11 +29,21 @@ public class ActivitySpecification {
             }
 
             if (!ObjectUtils.isEmpty(filterDTO.getGrade())){
-                Join<ScheduleEntity,ActivityEntity> join = root.join("classEntity", JoinType.INNER);
+                Join<ScheduleEntity, ClassEntity> join = root.join("classEntity", JoinType.INNER);
                 Expression<String> classEntity = join.get("grade");
                 predicates.add(classEntity.in(filterDTO.getGrade()));
             }
-        }
+
+            if (!ObjectUtils.isEmpty(filterDTO.getDepartment())){
+                Join<ScheduleEntity, ClassEntity> join = root.join("classEntity", JoinType.INNER);
+                Expression<String> classEntity = join.get("department");
+                predicates.add(classEntity.in(filterDTO.getDepartment()));
+            }
+
+            query.distinct(true);
+
+            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+        };
     }
 /*
     public Specification<ActivityEntity> getByFilters(FilterDTORequest activityFilterDTO){
