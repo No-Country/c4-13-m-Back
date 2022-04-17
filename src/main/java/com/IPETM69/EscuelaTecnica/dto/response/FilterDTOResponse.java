@@ -14,7 +14,7 @@ import java.util.List;
 public class FilterDTOResponse {
 
     private String activity;
-    private List<String> grade;
+    private String grade;
     private String department;
     private String employee;
 
