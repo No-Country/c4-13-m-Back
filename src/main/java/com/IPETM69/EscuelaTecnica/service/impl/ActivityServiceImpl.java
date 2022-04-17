@@ -1,10 +1,14 @@
 package com.IPETM69.EscuelaTecnica.service.impl;
 
 import com.IPETM69.EscuelaTecnica.dto.ActivityDTO;
+import com.IPETM69.EscuelaTecnica.dto.request.FilterDTORequest;
+import com.IPETM69.EscuelaTecnica.dto.response.FilterDTOResponse;
 import com.IPETM69.EscuelaTecnica.entity.ActivityEntity;
+import com.IPETM69.EscuelaTecnica.entity.ScheduleEntity;
 import com.IPETM69.EscuelaTecnica.exception.ActivityNotFoundException;
 import com.IPETM69.EscuelaTecnica.mapper.ActivityMapper;
 import com.IPETM69.EscuelaTecnica.repository.ActivityRepository;
+import com.IPETM69.EscuelaTecnica.repository.specification.ActivitySpecification;
 import com.IPETM69.EscuelaTecnica.service.ActivityService;
 import java.util.List;
 import java.util.Optional;
@@ -69,6 +73,12 @@ public class ActivityServiceImpl implements ActivityService {
         } else {
             throw new ActivityNotFoundException("Activity not found");
         }
+    }
+
+    @Override
+    public List<FilterDTOResponse> getByFilter(String activity, List<String> grade, String department){
+        FilterDTORequest filterDTO = new FilterDTORequest(activity, grade, department);
+        List<ScheduleEntity> entities = activityRepository.findAll(ActivitySpecification.getByFilters(filterDTO));
     }
     
 }
