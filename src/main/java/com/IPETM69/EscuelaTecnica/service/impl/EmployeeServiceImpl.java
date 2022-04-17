@@ -59,7 +59,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     
     @Override
     public List<EmployeeDTO> findByName(String name){
-        List<EmployeeEntity> entities = employeeRepository.findByName("%"+name+"%".toLowerCase());
+        List<EmployeeEntity> entities = employeeRepository.findByName("%"+name.toLowerCase()+"%");
         return employeeMapper.employeeEntityList2DTOList(entities);
     }
    

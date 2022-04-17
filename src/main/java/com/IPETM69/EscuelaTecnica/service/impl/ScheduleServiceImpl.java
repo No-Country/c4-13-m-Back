@@ -1,24 +1,20 @@
 package com.IPETM69.EscuelaTecnica.service.impl;
 
-import com.IPETM69.EscuelaTecnica.dto.EmployeeDTO;
 import com.IPETM69.EscuelaTecnica.dto.request.ScheduleDtoRequest;
 import com.IPETM69.EscuelaTecnica.dto.response.ScheduleDtoResponse;
-import com.IPETM69.EscuelaTecnica.entity.EmployeeEntity;
 import com.IPETM69.EscuelaTecnica.entity.ScheduleEntity;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
-import com.IPETM69.EscuelaTecnica.mapper.EmployeeMapper;
 import com.IPETM69.EscuelaTecnica.mapper.ScheduleMapper;
 import com.IPETM69.EscuelaTecnica.repository.ScheduleRepository;
-import com.IPETM69.EscuelaTecnica.service.EmployeeService;
 import com.IPETM69.EscuelaTecnica.service.ScheduleService;
-import java.util.List;
-import java.util.Optional;
-import javax.transaction.Transactional;
-
 import com.IPETM69.EscuelaTecnica.service.TimeService;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
