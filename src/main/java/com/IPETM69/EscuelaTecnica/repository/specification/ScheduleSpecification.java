@@ -39,65 +39,11 @@ public class ScheduleSpecification {
                 Expression<String> classEntity = join.get("department");
                 predicates.add(classEntity.in(filterDTO.getDepartment()));
             }
-
+            
             query.distinct(true);
 
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         };
     }
-/*
-    public Specification<ActivityEntity> getByFilters(FilterDTORequest activityFilterDTO){
-
-        return (root, query, criteriaBuilder) ->{
-            List<Predicate> predicates = new ArrayList<>();
-
-            if(StringUtils.hasLength(String.valueOf(activityFilterDTO.getIdActivity())){
-                predicates.add(
-                        criteriaBuilder.like()
-                )
-            }
-        }
-
-
-    }
-
-    /*
-    @Component
-	public class EmployeeSpecification {
-
-	public Specification<EmployeeEntity> getByFilters(EmployeeFilterDTO employeeFilterDTO){
-	return (root, query, criteriaBuilder) -> {
-	List<Predicate> predicates = new ArrayList<>();
-
-	if (StringUtils.hasLength(employeeFilterDTO.getFirstName())){
-	predicates.add(
-	criteriaBuilder.like(
-	criteriaBuilder.lower(root.get("firstName")),
-	"%"+employeeFilterDTO.getFirstName().toLowerCase()+"%"
-	)
-	);
-	}
-
-	if (StringUtils.hasLength(employeeFilterDTO.getLastName())){
-	predicates.add(
-	criteriaBuilder.like(
-	criteriaBuilder.lower(root.get("lastName")),
-	"%"+employeeFilterDTO.getLastName().toLowerCase()+"%"
-	)
-	);
-	}
-
-	query.distinct(true);
-
-	return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
-	};
-
-
-	}
-
-	}
-
-*/
-
 }
 
