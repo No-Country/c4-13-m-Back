@@ -109,17 +109,15 @@ public class ScheduleMapper {
     }
 
     public FilterDTOResponse filterEntity2DTO(ScheduleEntity scheduleSaved) {
-        ScheduleDtoResponse scheduleDtoResponse = new ScheduleDtoResponse();
-        scheduleDtoResponse.setId(scheduleSaved.getId());
-        scheduleDtoResponse.setIdActivity(scheduleSaved.getActivity().getId());
-        scheduleDtoResponse.setIdClass(scheduleSaved.getClassEntity().getId());
-        scheduleDtoResponse.setTimes(timeMapper.timeEntityList2DTOList(scheduleSaved.getTimes()));
-        scheduleDtoResponse.setIdEmployee(scheduleSaved.getEmployee().getId());
-        scheduleDtoResponse.setPosition(scheduleSaved.getPosition());
-        if (scheduleSaved.getReplacement() != null){
-            scheduleDtoResponse.setReplacement(replacementMapper.replacementEntity2DTO(scheduleSaved.getReplacement()));
-        }
-        return scheduleDtoResponse;
+        FilterDTOResponse dtoResponse = new FilterDTOResponse();
+
+        dtoResponse.setActivity(scheduleSaved.getActivity().getName());
+        dtoResponse.setGrade(scheduleSaved.getClassEntity().getGrade());
+        dtoResponse.setDepartment(scheduleSaved.getClassEntity().getDepartment());
+        dtoResponse.setEmployee(scheduleSaved.getEmployee().getFirstName()+" "+
+                scheduleSaved.getEmployee().getLastName());
+
+        return dtoResponse;
     }
 
 }
