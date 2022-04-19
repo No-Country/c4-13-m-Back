@@ -1,12 +1,14 @@
 package com.IPETM69.EscuelaTecnica.controller;
 
 import com.IPETM69.EscuelaTecnica.dto.ActivityDTO;
+import com.IPETM69.EscuelaTecnica.dto.response.FilterDTOResponse;
 import com.IPETM69.EscuelaTecnica.service.ActivityService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
 
 @CrossOrigin("*")
 @RestController
@@ -45,5 +47,5 @@ public class ActivityController {
     public ActivityDTO update(@RequestParam Long id, @Valid @RequestBody ActivityDTO activityDTO){
         return activityService.update(id, activityDTO);
     }
-    
+
 }
