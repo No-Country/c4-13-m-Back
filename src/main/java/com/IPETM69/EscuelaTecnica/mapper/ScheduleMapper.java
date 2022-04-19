@@ -112,7 +112,7 @@ public class ScheduleMapper {
         FilterDTOResponse dtoResponse = new FilterDTOResponse();
 
         dtoResponse.setActivity(scheduleSaved.getActivity().getName());
-        dtoResponse.setGrade(scheduleSaved.getClassEntity().getGrade());
+        dtoResponse.setGrade(scheduleSaved.getClassEntity().getGrade() + scheduleSaved.getClassEntity().getDivision());
         dtoResponse.setDepartment(scheduleSaved.getClassEntity().getDepartment());
         dtoResponse.setEmployee(scheduleSaved.getEmployee().getFirstName() + " " +
                 scheduleSaved.getEmployee().getLastName());
