@@ -1,27 +1,25 @@
+
 package com.IPETM69.EscuelaTecnica.auth.dto;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+@Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-public class RegisterUserDTO {
+public class UpdateUserDTO {
     
-    @NotBlank
     private String firstName;
-    @NotBlank
     private String lastName;
-    @NotBlank
     @Email
     private String email;
-    @NotBlank
     private String password;
-   
+    @Pattern(regexp = "(USER|ADMIN)",message = "Just acept the role USER or ADMIN")
+    private String role;
     
 }

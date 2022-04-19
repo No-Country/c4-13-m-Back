@@ -9,13 +9,10 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.AccessLevel;
@@ -32,26 +29,18 @@ import lombok.Setter;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 @Entity
+@Table(name = "roles")
 public class RoleEntity implements Serializable {
+    
     @Id
+    @Setter(AccessLevel.NONE)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
     @NonNull
     private String name;
     
-    @ManyToMany(mappedBy = "roles")
-    private Collection<UserEntity> users;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "roles_privileges", 
-        joinColumns = @JoinColumn(
-          name = "role_id", referencedColumnName = "id"), 
-        inverseJoinColumns = @JoinColumn(
-          name = "privilege_id", referencedColumnName = "id"))
-    private Collection<PrivilegeEntity> privileges;
-    
+    private String description;
     
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date createdAt;

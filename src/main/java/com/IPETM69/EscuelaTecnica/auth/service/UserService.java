@@ -1,28 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.IPETM69.EscuelaTecnica.auth.service;
 
-import com.IPETM69.EscuelaTecnica.auth.dto.RegisterUserDTO;
 import com.IPETM69.EscuelaTecnica.auth.entity.UserEntity;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
     
-    public RegisterUserDTO create(RegisterUserDTO user);
+    UserEntity create(UserEntity user);
     
-    public void validated(RegisterUserDTO user);
-
-    public RegisterUserDTO update(Long id, RegisterUserDTO user);
-
-    public void delete(Long id);
-
-    public RegisterUserDTO findById(Long id);
-
-    public RegisterUserDTO findByEmail(String email);
+    List<UserEntity> findAll();
+    
+    List<UserEntity> findByRole(String role);
+    
+    List<UserEntity> findByRole(Long id);
+    
+    boolean emailExists(String email);
+    
+    UserEntity findById(Long id);
+    
+    UserEntity findByEmail(String email);
+    
+    void update(Long id, UserEntity user);
+    
+    void put(Long id, UserEntity user);
+    
+    void delete(Long id);
     
     
 }
