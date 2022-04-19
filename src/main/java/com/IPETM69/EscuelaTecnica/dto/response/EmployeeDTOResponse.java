@@ -1,19 +1,18 @@
-package com.IPETM69.EscuelaTecnica.dto;
+package com.IPETM69.EscuelaTecnica.dto.response;
 
-import com.IPETM69.EscuelaTecnica.dto.response.ScheduleDtoResponse;
-import com.IPETM69.EscuelaTecnica.entity.ScheduleEntity;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmployeeDTO {
+public class EmployeeDTOResponse {
 
     private Long id;
     private String firstName;
