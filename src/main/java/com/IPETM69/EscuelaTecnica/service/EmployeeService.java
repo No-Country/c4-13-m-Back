@@ -1,6 +1,8 @@
 package com.IPETM69.EscuelaTecnica.service;
 
-import com.IPETM69.EscuelaTecnica.dto.EmployeeDTO;
+import com.IPETM69.EscuelaTecnica.dto.request.EmployeeDTORequest;
+import com.IPETM69.EscuelaTecnica.dto.response.EmployeeDTOResponse;
+import com.IPETM69.EscuelaTecnica.dto.response.EmployeeFilterDTO;
 import lombok.NonNull;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -8,16 +10,16 @@ import java.util.List;
 
 
 public interface EmployeeService {
-    EmployeeDTO save(EmployeeDTO employeeDTO);
+    EmployeeDTOResponse save(EmployeeDTORequest employeeDTO);
 
-    List<EmployeeDTO> getAllEmployees();
+    List<EmployeeDTOResponse> getAllEmployees();
 
-    EmployeeDTO findById(@NotNull Long id);
+    EmployeeDTOResponse findById(@NotNull Long id);
 
-    EmployeeDTO update(Long id, EmployeeDTO employeeDTO);
+    EmployeeDTOResponse update(Long id, EmployeeDTOResponse employeeDTO);
 
     void delete(@NonNull Long id);
     
-    List<EmployeeDTO> findByName(String name);
+    List<EmployeeFilterDTO> findByName(String name);
 
 }

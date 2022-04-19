@@ -1,6 +1,8 @@
 package com.IPETM69.EscuelaTecnica.controller;
 
-import com.IPETM69.EscuelaTecnica.dto.EmployeeDTO;
+import com.IPETM69.EscuelaTecnica.dto.request.EmployeeDTORequest;
+import com.IPETM69.EscuelaTecnica.dto.response.EmployeeDTOResponse;
+import com.IPETM69.EscuelaTecnica.dto.response.EmployeeFilterDTO;
 import com.IPETM69.EscuelaTecnica.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,32 +22,32 @@ public class EmployeeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<EmployeeDTO> save(@RequestBody EmployeeDTO employee){
-        EmployeeDTO savedEmployee = employeeService.save(employee);
+    public ResponseEntity<EmployeeDTOResponse> save(@RequestBody EmployeeDTORequest employee){
+        EmployeeDTOResponse savedEmployee = employeeService.save(employee);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedEmployee);
     }
 
     @GetMapping("/lista")
     @ResponseStatus(HttpStatus.OK)
-    public List<EmployeeDTO> getAll(){
+    public List<EmployeeDTOResponse> getAll(){
         return employeeService.getAllEmployees();
     }
     
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<EmployeeDTO> getByName(@RequestParam(required = false) String name){
+    public List<EmployeeFilterDTO> getByName(@RequestParam(required = false) String name){
         return employeeService.findByName(name);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public EmployeeDTO findById(@PathVariable Long id) {
+    public EmployeeDTOResponse findById(@PathVariable Long id) {
         return  employeeService.findById(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public EmployeeDTO update(@PathVariable Long id, @Valid @RequestBody EmployeeDTO employeeDTO){
+    public EmployeeDTOResponse update(@PathVariable Long id, @Valid @RequestBody EmployeeDTOResponse employeeDTO){
         return employeeService.update(id, employeeDTO);
     }
 

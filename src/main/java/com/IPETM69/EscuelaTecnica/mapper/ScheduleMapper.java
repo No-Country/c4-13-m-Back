@@ -1,9 +1,9 @@
 package com.IPETM69.EscuelaTecnica.mapper;
 
-import com.IPETM69.EscuelaTecnica.dto.request.FilterDTORequest;
 import com.IPETM69.EscuelaTecnica.dto.request.ScheduleDtoRequest;
 import com.IPETM69.EscuelaTecnica.dto.response.FilterDTOResponse;
 import com.IPETM69.EscuelaTecnica.dto.response.ScheduleDtoResponse;
+import com.IPETM69.EscuelaTecnica.dto.response.ScheduleSearchDto;
 import com.IPETM69.EscuelaTecnica.entity.ScheduleEntity;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
 import com.IPETM69.EscuelaTecnica.repository.ActivityRepository;
@@ -12,8 +12,8 @@ import com.IPETM69.EscuelaTecnica.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 public class ScheduleMapper {
@@ -112,11 +112,28 @@ public class ScheduleMapper {
         FilterDTOResponse dtoResponse = new FilterDTOResponse();
 
         dtoResponse.setActivity(scheduleSaved.getActivity().getName());
-        dtoResponse.setGrade(scheduleSaved.getClassEntity().getGrade());
+        dtoResponse.setGrade(scheduleSaved.getClassEntity().getGrade() + scheduleSaved.getClassEntity().getDivision());
         dtoResponse.setDepartment(scheduleSaved.getClassEntity().getDepartment());
         dtoResponse.setEmployee(scheduleSaved.getEmployee().getFirstName() + " " +
                 scheduleSaved.getEmployee().getLastName());
         return dtoResponse;
     }
 
+    public ScheduleSearchDto scheduleEntity2ScheduleSearchDto(List<ScheduleEntity> schedules) {
+        ScheduleSearchDto searchDto = new ScheduleSearchDto();
+        Set<String> activities = new HashSet<>();
+        Set<String> grade = new HashSet<>();
+        Set<String> department = new HashSet<>();
+
+        for (ScheduleEntity schedule : schedules){
+            activities.add(schedule.getActivity().getName());
+            grade.add(schedule.getClassEntity().getGrade());
+            department.add(schedule.getClassEntity().getDepartment());
+        }
+        searchDto.setActivity(activities.stream().sorted().collect(Collectors.toList()));
+        searchDto.setGrades(grade.stream().sorted().collect(Collectors.toList()));
+        searchDto.setDepartment(department.stream().sorted().collect(Collectors.toList()));
+
+        return searchDto;
+    }
 }
