@@ -3,6 +3,7 @@ package com.IPETM69.EscuelaTecnica.controller;
 import com.IPETM69.EscuelaTecnica.dto.request.ScheduleDtoRequest;
 import com.IPETM69.EscuelaTecnica.dto.response.FilterDTOResponse;
 import com.IPETM69.EscuelaTecnica.dto.response.ScheduleDtoResponse;
+import com.IPETM69.EscuelaTecnica.dto.response.ScheduleSearchDto;
 import com.IPETM69.EscuelaTecnica.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,7 +51,8 @@ public class ScheduleController {
         return scheduleService.update(id, scheduleDtoRequest);
     }
 
-    @GetMapping
+    @GetMapping("/busqueda")
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<FilterDTOResponse>> getDetailsByFilter(
             @RequestParam (required = false) String activity,
             @RequestParam (required = false) List<String> grade,
@@ -59,5 +61,10 @@ public class ScheduleController {
         List<FilterDTOResponse> detailsByFilter = scheduleService.getByFilter(activity,grade,department);
         return ResponseEntity.ok(detailsByFilter);
     }
-    
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public ScheduleSearchDto search (){
+        return scheduleService.search();
+    }
 }
