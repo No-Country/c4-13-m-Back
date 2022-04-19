@@ -1,11 +1,15 @@
 package com.IPETM69.EscuelaTecnica.service.impl;
 
+import com.IPETM69.EscuelaTecnica.dto.request.FilterDTORequest;
 import com.IPETM69.EscuelaTecnica.dto.request.ScheduleDtoRequest;
+import com.IPETM69.EscuelaTecnica.dto.response.FilterDTOResponse;
 import com.IPETM69.EscuelaTecnica.dto.response.ScheduleDtoResponse;
 import com.IPETM69.EscuelaTecnica.entity.ScheduleEntity;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
 import com.IPETM69.EscuelaTecnica.mapper.ScheduleMapper;
 import com.IPETM69.EscuelaTecnica.repository.ScheduleRepository;
+
+import com.IPETM69.EscuelaTecnica.repository.specification.ScheduleSpecification;
 import com.IPETM69.EscuelaTecnica.service.ScheduleService;
 import com.IPETM69.EscuelaTecnica.service.TimeService;
 import lombok.NonNull;
@@ -27,6 +31,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Autowired
     private TimeService timeService;
+
+    @Autowired
+    private ScheduleSpecification scheduleSpecification;
 
     @Transactional
     public ScheduleDtoResponse create(ScheduleDtoRequest schedule) {
@@ -69,6 +76,13 @@ public class ScheduleServiceImpl implements ScheduleService {
         } else {
             throw new ParamNotFound("Schedule not found");
         }
+    }
+
+    @Override
+    public List<FilterDTOResponse> getByFilter(String activity, List<String> grade, String department){
+        FilterDTORequest filterDTO = new FilterDTORequest(activity, grade, department);
+        List<ScheduleEntity> entities = scheduleRepository.findAll(scheduleSpecification.getByFilters(filterDTO));
+        return scheduleMapper.filterEntityList2DTOList(entities);
     }
     
 }

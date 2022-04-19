@@ -1,6 +1,8 @@
 package com.IPETM69.EscuelaTecnica.mapper;
 
+import com.IPETM69.EscuelaTecnica.dto.request.FilterDTORequest;
 import com.IPETM69.EscuelaTecnica.dto.request.ScheduleDtoRequest;
+import com.IPETM69.EscuelaTecnica.dto.response.FilterDTOResponse;
 import com.IPETM69.EscuelaTecnica.dto.response.ScheduleDtoResponse;
 import com.IPETM69.EscuelaTecnica.entity.ScheduleEntity;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
@@ -96,6 +98,25 @@ public class ScheduleMapper {
             entities.add(scheduleResponseDTO2Entity(dto));
         }
         return entities;
+    }
+
+    public List<FilterDTOResponse> filterEntityList2DTOList(List<ScheduleEntity> entities) {
+        List<FilterDTOResponse> dtos = new ArrayList<>();
+        for (ScheduleEntity entity : entities) {
+            dtos.add(filterEntity2DTO(entity));
+        }
+        return dtos;
+    }
+
+    public FilterDTOResponse filterEntity2DTO(ScheduleEntity scheduleSaved) {
+        FilterDTOResponse dtoResponse = new FilterDTOResponse();
+
+        dtoResponse.setActivity(scheduleSaved.getActivity().getName());
+        dtoResponse.setGrade(scheduleSaved.getClassEntity().getGrade());
+        dtoResponse.setDepartment(scheduleSaved.getClassEntity().getDepartment());
+        dtoResponse.setEmployee(scheduleSaved.getEmployee().getFirstName() + " " +
+                scheduleSaved.getEmployee().getLastName());
+        return dtoResponse;
     }
 
 }
