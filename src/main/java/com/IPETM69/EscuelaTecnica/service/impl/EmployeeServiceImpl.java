@@ -1,6 +1,8 @@
 package com.IPETM69.EscuelaTecnica.service.impl;
 
-import com.IPETM69.EscuelaTecnica.dto.EmployeeDTO;
+import com.IPETM69.EscuelaTecnica.dto.request.EmployeeDTORequest;
+import com.IPETM69.EscuelaTecnica.dto.response.EmployeeDTOResponse;
+import com.IPETM69.EscuelaTecnica.dto.response.EmployeeBasicDTO;
 import com.IPETM69.EscuelaTecnica.entity.EmployeeEntity;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
 import com.IPETM69.EscuelaTecnica.mapper.EmployeeMapper;
@@ -23,19 +25,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public EmployeeDTO save(EmployeeDTO employeeDTO){
-        EmployeeEntity entity = employeeMapper.employeeDTO2Entity(employeeDTO);
+    public EmployeeDTOResponse save(EmployeeDTORequest employeeDTO){
+        EmployeeEntity entity = employeeMapper.employeeDTORequest2Entity(employeeDTO);
         EmployeeEntity entitySaved = employeeRepository.save(entity);
-        EmployeeDTO result = employeeMapper.employeeEntity2DTO(entitySaved);
+        EmployeeDTOResponse result = employeeMapper.employeeEntity2DTO(entitySaved);
         return result;
     }
 
-    public List<EmployeeDTO> getAllEmployees(){
+    public List<EmployeeDTOResponse> getAllEmployees(){
         List<EmployeeEntity> entities = employeeRepository.findAll();
         return employeeMapper.employeeEntityList2DTOList(entities);
     }
 
-    public EmployeeDTO findById(@NotNull Long id) {
+    public EmployeeDTOResponse findById(@NotNull Long id) {
         Optional<EmployeeEntity> entity = employeeRepository.findById(id);
         if (!entity.isPresent()) {
             throw new ParamNotFound("Error: Invalid employee id");
@@ -43,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeMapper.employeeEntity2DTO(entity.get());
     }
 
-    public EmployeeDTO update(Long id, EmployeeDTO employeeDTO) {
+    public EmployeeDTOResponse update(Long id, EmployeeDTOResponse employeeDTO) {
         Optional<EmployeeEntity> entity = employeeRepository.findById(id);
         if (!entity.isPresent()) {
             throw new ParamNotFound("Error: Invalid employee id");
@@ -58,9 +60,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
     
     @Override
-    public List<EmployeeDTO> findByName(String name){
-        List<EmployeeEntity> entities = employeeRepository.findByName("%"+name+"%".toLowerCase());
-        return employeeMapper.employeeEntityList2DTOList(entities);
+    public List<EmployeeBasicDTO> findByName(String name){
+        List<EmployeeEntity> entities = employeeRepository.findByName("%"+name.toLowerCase()+"%");
+        return employeeMapper.employeeEntityList2DTOFilterList(entities);
     }
    
 

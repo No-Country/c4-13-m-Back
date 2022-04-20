@@ -2,11 +2,12 @@ package com.IPETM69.EscuelaTecnica.dto.response;
 
 import com.IPETM69.EscuelaTecnica.dto.ReplacementDTO;
 import com.IPETM69.EscuelaTecnica.enumeration.PositionEnum;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
