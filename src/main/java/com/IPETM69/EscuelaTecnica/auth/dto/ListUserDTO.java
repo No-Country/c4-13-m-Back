@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.IPETM69.EscuelaTecnica.auth.dto;
 
-import com.IPETM69.EscuelaTecnica.auth.entity.RoleEntity;
 import com.IPETM69.EscuelaTecnica.auth.entity.UserEntity;
+import com.IPETM69.EscuelaTecnica.auth.enums.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +16,7 @@ public class ListUserDTO {
     private String firstName;
     private String lastName;
     private String email;
-    private RoleEntity role;
+    private Roles role;
 
     public ListUserDTO(UserEntity user) {
         this.id = user.getId();

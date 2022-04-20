@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class ResponseLoginDTO {
     
     private String firstName;
+    private String lastName;
     private String token;
     private String email;
     private String role;

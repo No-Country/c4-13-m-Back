@@ -13,8 +13,6 @@ public interface UserService {
     
     List<UserEntity> findByRole(String role);
     
-    List<UserEntity> findByRole(Long id);
-    
     boolean emailExists(String email);
     
     UserEntity findById(Long id);

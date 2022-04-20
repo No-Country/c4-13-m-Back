@@ -1,16 +1,14 @@
 package com.IPETM69.EscuelaTecnica.auth.entity;
 
+import com.IPETM69.EscuelaTecnica.auth.enums.Roles;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -49,9 +47,9 @@ public class UserEntity implements Serializable {
     @NonNull
     private String password;
     
-    @ManyToOne
     @NonNull
-    private RoleEntity role;
+    @Enumerated(EnumType.STRING)
+    private Roles role;
     
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date createdAt;

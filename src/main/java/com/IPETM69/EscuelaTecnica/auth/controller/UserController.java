@@ -7,12 +7,11 @@ import com.IPETM69.EscuelaTecnica.auth.dto.ResponseRegisterDTO;
 import com.IPETM69.EscuelaTecnica.auth.dto.UserProfileDTO;
 import com.IPETM69.EscuelaTecnica.auth.entity.UserEntity;
 import com.IPETM69.EscuelaTecnica.auth.repository.UserRepository;
-import com.IPETM69.EscuelaTecnica.auth.service.RoleService;
-import com.IPETM69.EscuelaTecnica.auth.service.SendGridService;
 import com.IPETM69.EscuelaTecnica.auth.service.UserService;
 import com.IPETM69.EscuelaTecnica.auth.service.impl.JwtUtil;
 import com.IPETM69.EscuelaTecnica.auth.service.impl.UserDetailsServiceImpl;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
+import com.IPETM69.EscuelaTecnica.service.impl.EmailServiceImpl;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,8 +43,6 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private RoleService roleService;
-    @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
     private JwtUtil jwtTokenUtil;
@@ -54,7 +51,7 @@ public class UserController {
     @Autowired
     private UserDetailsServiceImpl userDetailsServices;
     @Autowired
-    private SendGridService sendGridService;
+    private EmailServiceImpl emailService;
 
 
     @PostMapping("/register")
@@ -70,34 +67,26 @@ public class UserController {
         }
 
         UserEntity user = new UserEntity();
-        user.setEmail(registerUserDTO.getEmail());
-        user.setPassword(registerUserDTO.getPassword());
-        user.setRole(roleService.findByName("USER"));
-
-        System.out.println(user);
-
+        modelMapper.map(registerUserDTO, user);
         userService.create(user);
 
         ResponseRegisterDTO responseRegisterDTO = new ResponseRegisterDTO();
         modelMapper.map(user, responseRegisterDTO);
         UserDetails userDetails = userDetailsServices.loadUserByUsername(user.getEmail());
         responseRegisterDTO.setToken(jwtTokenUtil.generateToken(userDetails));
-
-        // Welcome mail sending
-        httpResponse.addHeader("User-Mail-Sent", String.valueOf(sendGridService.welcomeMessage(registerUserDTO.getFirstName(), registerUserDTO.getLastName(), registerUserDTO.getEmail())));
+        
+//        emailService.enviarEmail(user.getEmail());
         
         return ResponseEntity.created(null).body(responseRegisterDTO);
 
     }
 
-    /**
-     *
-     * @param loginRequestDTO
-     * @return
-     */
+
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> login(@Valid @RequestBody RequestLoginDTO loginRequestDTO){
+        ModelMapper modelMapper = new ModelMapper();
+        
         Optional<UserEntity> userOptional = userRepository.findByEmail(loginRequestDTO.getUsername());
 
         ResponseLoginDTO loginResponse = new ResponseLoginDTO();
@@ -112,11 +101,9 @@ public class UserController {
                 authenticationManager.authenticate(authentication);
 
                 String jwt = jwtTokenUtil.generateToken(userDetails);
-
-                loginResponse.setFirstName(userOptional.get().getFirstName());
+                UserEntity user = userOptional.get();
+                modelMapper.map(user, loginResponse);
                 loginResponse.setToken(jwt);
-                loginResponse.setEmail(userOptional.get().getEmail());
-                loginResponse.setRole(userOptional.get().getRole().getName());
 
             } else {
                 return ResponseEntity.badRequest().body("Password doesn't match");

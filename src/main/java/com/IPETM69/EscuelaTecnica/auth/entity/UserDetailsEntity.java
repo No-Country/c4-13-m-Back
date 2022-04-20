@@ -16,13 +16,13 @@ public class UserDetailsEntity implements UserDetails {
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsEntity (UserEntity user) {
-        this.username = user.getEmail();
-        this.password = user.getPassword();
-        this.authorities = Arrays.stream(user.getRole().getName().split(","))
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
-    }
+//    public UserDetailsEntity (UserEntity user) {
+//        this.username = user.getEmail();
+//        this.password = user.getPassword();
+//        this.authorities = Arrays.stream(user.getRole()
+//                .map(SimpleGrantedAuthority::new)
+//                .collect(Collectors.toList());
+//    }
     
     public UserDetailsEntity(Long id, String username, String password,
                            Collection<? extends GrantedAuthority> authorities) {

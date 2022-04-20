@@ -1,9 +1,8 @@
 package com.IPETM69.EscuelaTecnica.auth.service.impl;
 
 
-import com.IPETM69.EscuelaTecnica.auth.entity.RoleEntity;
 import com.IPETM69.EscuelaTecnica.auth.entity.UserEntity;
-import com.IPETM69.EscuelaTecnica.auth.repository.RoleRepository;
+import com.IPETM69.EscuelaTecnica.auth.enums.Roles;
 import com.IPETM69.EscuelaTecnica.auth.repository.UserRepository;
 import com.IPETM69.EscuelaTecnica.auth.service.UserService;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
@@ -28,9 +27,6 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepo;
 
     @Autowired
-    private RoleRepository roleRepo;
-
-    @Autowired
     private BCryptPasswordEncoder encoder;
 
     @Transactional
@@ -42,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public UserEntity create(String firstName, String lastName, String email, String password, RoleEntity role) {
+    public UserEntity create(String firstName, String lastName, String email, String password, Roles role) {
         return create(UserEntity.builder()
                 .firstName(firstName)
                 .lastName(lastName)
@@ -53,8 +49,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public UserEntity create(String firstName, String lastName, String email, String password, @NonNull Long roleId) {
-        RoleEntity role = roleRepo.getById(roleId);
+    public UserEntity created(String firstName, String lastName, String email, String password, Roles role) {
         return create(firstName, lastName, email, password, role);
     }
 
@@ -65,16 +60,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserEntity> findByRole(String role) {
-        return userRepo.findByRole_Name(role);
-    }
-
-    public List<UserEntity> findByRole(RoleEntity role) {
-        return findByRole(role.getName());
-    }
-
-    @Override
-    public List<UserEntity> findByRole(Long id) {
-        return userRepo.findByRole_Id(id);
+        return userRepo.findByRole(role);
     }
 
     @Override
@@ -148,5 +134,6 @@ public class UserServiceImpl implements UserService {
             throw new ParamNotFound("User not found");
         }
     }
+
     
 }

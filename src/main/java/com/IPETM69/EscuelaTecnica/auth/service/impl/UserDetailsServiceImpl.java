@@ -5,10 +5,12 @@ import com.IPETM69.EscuelaTecnica.auth.repository.UserRepository;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
 import java.util.ArrayList;
 import java.util.Collection;
-
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
@@ -25,9 +27,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         user.orElseThrow(() -> new ParamNotFound("Not found: " + username));
 
-        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(user.get().getRole().getName()));
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + user.get().getRole()));
 
-        return new org.springframework.security.core.userdetails.User(user.get().getEmail(), user.get().getPassword(), authorities);
+        return new User(user.get().getEmail(), user.get().getPassword(), authorities);
     }
+
 }
