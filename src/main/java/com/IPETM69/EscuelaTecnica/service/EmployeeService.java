@@ -2,7 +2,7 @@ package com.IPETM69.EscuelaTecnica.service;
 
 import com.IPETM69.EscuelaTecnica.dto.request.EmployeeDTORequest;
 import com.IPETM69.EscuelaTecnica.dto.response.EmployeeDTOResponse;
-import com.IPETM69.EscuelaTecnica.dto.response.EmployeeFilterDTO;
+import com.IPETM69.EscuelaTecnica.dto.response.EmployeeBasicDTO;
 import lombok.NonNull;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -20,6 +20,6 @@ public interface EmployeeService {
 
     void delete(@NonNull Long id);
     
-    List<EmployeeFilterDTO> findByName(String name);
+    List<EmployeeBasicDTO> findByName(String name);
 
 }

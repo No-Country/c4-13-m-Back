@@ -9,7 +9,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class EmployeeFilterDTO {
+public class EmployeeBasicDTO {
     private Long id;
-    private String name;
+    private String firstName;
+    private String lastName;
 }

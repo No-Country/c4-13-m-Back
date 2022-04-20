@@ -2,7 +2,7 @@ package com.IPETM69.EscuelaTecnica.mapper;
 
 import com.IPETM69.EscuelaTecnica.dto.request.EmployeeDTORequest;
 import com.IPETM69.EscuelaTecnica.dto.response.EmployeeDTOResponse;
-import com.IPETM69.EscuelaTecnica.dto.response.EmployeeFilterDTO;
+import com.IPETM69.EscuelaTecnica.dto.response.EmployeeBasicDTO;
 import com.IPETM69.EscuelaTecnica.entity.EmployeeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -62,11 +62,12 @@ public class EmployeeMapper {
         }
         return dtos;
     }
-    public List<EmployeeFilterDTO> employeeEntityList2DTOFilterList(List<EmployeeEntity> entities) {
-        List<EmployeeFilterDTO> dtos = new ArrayList<>();
+    public List<EmployeeBasicDTO> employeeEntityList2DTOFilterList(List<EmployeeEntity> entities) {
+        List<EmployeeBasicDTO> dtos = new ArrayList<>();
         for (EmployeeEntity entity : entities) {
-            EmployeeFilterDTO filterDTO = new EmployeeFilterDTO();
-            filterDTO.setName(entity.getFirstName() + " " + entity.getLastName().toUpperCase());
+            EmployeeBasicDTO filterDTO = new EmployeeBasicDTO();
+            filterDTO.setFirstName(entity.getFirstName());
+            filterDTO.setLastName(entity.getLastName());
             filterDTO.setId(entity.getId());
             dtos.add(filterDTO);
         }

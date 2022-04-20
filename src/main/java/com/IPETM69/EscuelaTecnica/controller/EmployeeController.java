@@ -2,7 +2,7 @@ package com.IPETM69.EscuelaTecnica.controller;
 
 import com.IPETM69.EscuelaTecnica.dto.request.EmployeeDTORequest;
 import com.IPETM69.EscuelaTecnica.dto.response.EmployeeDTOResponse;
-import com.IPETM69.EscuelaTecnica.dto.response.EmployeeFilterDTO;
+import com.IPETM69.EscuelaTecnica.dto.response.EmployeeBasicDTO;
 import com.IPETM69.EscuelaTecnica.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +35,7 @@ public class EmployeeController {
     
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<EmployeeFilterDTO> getByName(@RequestParam(required = false) String name){
+    public List<EmployeeBasicDTO> getByName(@RequestParam(required = false) String name){
         return employeeService.findByName(name);
     }
 

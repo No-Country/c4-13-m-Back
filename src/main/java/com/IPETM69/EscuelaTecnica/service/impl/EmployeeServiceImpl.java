@@ -2,7 +2,7 @@ package com.IPETM69.EscuelaTecnica.service.impl;
 
 import com.IPETM69.EscuelaTecnica.dto.request.EmployeeDTORequest;
 import com.IPETM69.EscuelaTecnica.dto.response.EmployeeDTOResponse;
-import com.IPETM69.EscuelaTecnica.dto.response.EmployeeFilterDTO;
+import com.IPETM69.EscuelaTecnica.dto.response.EmployeeBasicDTO;
 import com.IPETM69.EscuelaTecnica.entity.EmployeeEntity;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
 import com.IPETM69.EscuelaTecnica.mapper.EmployeeMapper;
@@ -60,7 +60,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
     
     @Override
-    public List<EmployeeFilterDTO> findByName(String name){
+    public List<EmployeeBasicDTO> findByName(String name){
         List<EmployeeEntity> entities = employeeRepository.findByName("%"+name.toLowerCase()+"%");
         return employeeMapper.employeeEntityList2DTOFilterList(entities);
     }
