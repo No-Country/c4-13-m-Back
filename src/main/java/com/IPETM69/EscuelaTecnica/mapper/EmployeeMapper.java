@@ -67,6 +67,7 @@ public class EmployeeMapper {
         for (EmployeeEntity entity : entities) {
             EmployeeFilterDTO filterDTO = new EmployeeFilterDTO();
             filterDTO.setName(entity.getFirstName() + " " + entity.getLastName().toUpperCase());
+            filterDTO.setId(entity.getId());
             dtos.add(filterDTO);
         }
         return dtos;
