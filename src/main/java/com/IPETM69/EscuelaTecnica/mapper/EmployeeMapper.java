@@ -50,7 +50,7 @@ public class EmployeeMapper {
         dto.setPhone(entity.getPhone());
         dto.setEmail(entity.getEmail());
         dto.setFile(entity.getFile());
-        dto.setSchedules(scheduleMapper.scheduleEntityList2DTOList(entity.getSchedules()));
+        dto.setSchedules(scheduleMapper.scheduleEntityList2DTOBasicList(entity.getSchedules()));
 
         return dto;
     }

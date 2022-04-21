@@ -21,6 +21,6 @@ public class EmployeeDTOResponse {
     private Long phone;
     private String email;
     private String file;
-    private List<ScheduleDtoResponse> schedules = new ArrayList<>();
+    private List<ScheduleBasicDtoResponse> schedules = new ArrayList<>();
 
 }
