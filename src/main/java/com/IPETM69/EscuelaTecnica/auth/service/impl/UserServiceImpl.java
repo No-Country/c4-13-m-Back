@@ -1,6 +1,7 @@
 package com.IPETM69.EscuelaTecnica.auth.service.impl;
 
 
+import com.IPETM69.EscuelaTecnica.auth.dto.RegisterUserDTO;
 import com.IPETM69.EscuelaTecnica.auth.entity.UserEntity;
 import com.IPETM69.EscuelaTecnica.auth.enums.Roles;
 import com.IPETM69.EscuelaTecnica.auth.repository.UserRepository;
@@ -89,16 +90,16 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void update(@NonNull Long id, @NonNull UserEntity newUser) throws ParamNotFound {
+    public void update(@NonNull Long id, @NonNull RegisterUserDTO registerUserDTO) throws ParamNotFound {
         Optional<UserEntity> opt = userRepo.findById(id);
         if (opt.isPresent()) {
             ModelMapper modelMapper = new ModelMapper();
             modelMapper.getConfiguration().setSkipNullEnabled(true).setMatchingStrategy(MatchingStrategies.STRICT).setFieldAccessLevel(AccessLevel.PRIVATE);;
-            if(newUser.getPassword() != null){
-                newUser.setPassword(encoder.encode(newUser.getPassword()));
+            if(registerUserDTO.getPassword() != null){
+                registerUserDTO.setPassword(encoder.encode(registerUserDTO.getPassword()));
             }
             UserEntity user = opt.get();
-            modelMapper.map(newUser, user);
+            modelMapper.map(registerUserDTO, user);
             user.setUpdatedAt(new Date());
             userRepo.save(user);
         } else {

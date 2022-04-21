@@ -1,5 +1,6 @@
 package com.IPETM69.EscuelaTecnica.auth.service;
 
+import com.IPETM69.EscuelaTecnica.auth.dto.RegisterUserDTO;
 import com.IPETM69.EscuelaTecnica.auth.entity.UserEntity;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public interface UserService {
     
     UserEntity findByEmail(String email);
     
-    void update(Long id, UserEntity user);
+    void update(Long id, RegisterUserDTO registerUserDTO);
     
     void put(Long id, UserEntity user);
     
