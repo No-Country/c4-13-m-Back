@@ -35,19 +35,19 @@ public class ScheduleController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ScheduleDtoResponse findById(@RequestParam Long id) {
+    public ScheduleDtoResponse findById(@PathVariable Long id) {
         return scheduleService.findById(id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@RequestParam Long id){
+    public void delete(@PathVariable Long id){
         scheduleService.delete(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ScheduleDtoResponse update(@RequestParam Long id, @Valid @RequestBody ScheduleDtoRequest scheduleDtoRequest){
+    public ScheduleDtoResponse update(@PathVariable Long id, @Valid @RequestBody ScheduleDtoRequest scheduleDtoRequest){
         return scheduleService.update(id, scheduleDtoRequest);
     }
 
