@@ -1,7 +1,6 @@
 package com.IPETM69.EscuelaTecnica.controller;
 
 import com.IPETM69.EscuelaTecnica.dto.ActivityDTO;
-import com.IPETM69.EscuelaTecnica.dto.response.FilterDTOResponse;
 import com.IPETM69.EscuelaTecnica.service.ActivityService;
 import java.util.List;
 import javax.validation.Valid;
@@ -32,19 +31,19 @@ public class ActivityController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ActivityDTO findById(@RequestParam Long id) {
+    public ActivityDTO findById(@PathVariable Long id) {
         return  activityService.findById(id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@RequestParam Long id){
+    public void delete(@PathVariable Long id){
         activityService.delete(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ActivityDTO update(@RequestParam Long id, @Valid @RequestBody ActivityDTO activityDTO){
+    public ActivityDTO update(@PathVariable Long id, @Valid @RequestBody ActivityDTO activityDTO){
         return activityService.update(id, activityDTO);
     }
 
