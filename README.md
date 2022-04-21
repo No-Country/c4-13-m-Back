@@ -16,4 +16,4 @@ Utilizamos BBDD Postgres, React.js y Java Spring.
   - Eudes de Souza Lima Filho - Desarrollador Frontend
   - Edwin Garcia - Desarrollador Frontend
   - Gabriela Schiavo - Diseñadora UX/UI
-- Link del Deploy: 
+- Link del Deploy: https://c4-13-m-front.vercel.app/
