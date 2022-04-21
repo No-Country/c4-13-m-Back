@@ -1,7 +1,10 @@
 package com.IPETM69.EscuelaTecnica.mapper;
 
 import com.IPETM69.EscuelaTecnica.dto.request.ScheduleDtoRequest;
+import com.IPETM69.EscuelaTecnica.dto.response.FilterDTOResponse;
+import com.IPETM69.EscuelaTecnica.dto.response.ScheduleBasicDtoResponse;
 import com.IPETM69.EscuelaTecnica.dto.response.ScheduleDtoResponse;
+import com.IPETM69.EscuelaTecnica.dto.response.ScheduleSearchDto;
 import com.IPETM69.EscuelaTecnica.entity.ScheduleEntity;
 import com.IPETM69.EscuelaTecnica.exception.ParamNotFound;
 import com.IPETM69.EscuelaTecnica.repository.ActivityRepository;
@@ -11,7 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
 public class ScheduleMapper {
@@ -71,6 +77,16 @@ public class ScheduleMapper {
         return scheduleDtoResponse;
     }
 
+    public ScheduleBasicDtoResponse scheduleEntity2DTOBasic(ScheduleEntity scheduleSaved) {
+        ScheduleBasicDtoResponse dtoResponse = new ScheduleBasicDtoResponse();
+        dtoResponse.setId(scheduleSaved.getId());
+        dtoResponse.setActivity(scheduleSaved.getActivity().getName());
+        dtoResponse.setGrade(scheduleSaved.getClassEntity().getGrade() + scheduleSaved.getClassEntity().getDivision());
+        dtoResponse.setPosition(scheduleSaved.getPosition());
+
+        return dtoResponse;
+    }
+
     public void scheduleEntityRefreshValues(ScheduleEntity scheduleEntity, ScheduleDtoRequest scheduleDtoRequest) {
         scheduleEntity.setActivity((activityRepository.findById(scheduleDtoRequest.getIdActivity()).orElseThrow( () -> new ParamNotFound("Activity not found."))));
         scheduleEntity.setClassEntity(classRepository.findById(scheduleDtoRequest.getIdClass()).orElseThrow( () -> new ParamNotFound("Class not found.")));
@@ -90,6 +106,14 @@ public class ScheduleMapper {
         return dtos;
     }
 
+    public List<ScheduleBasicDtoResponse> scheduleEntityList2DTOBasicList(List<ScheduleEntity> entities) {
+        List<ScheduleBasicDtoResponse> dtos = new ArrayList<>();
+        for (ScheduleEntity entity : entities) {
+            dtos.add(scheduleEntity2DTOBasic(entity));
+        }
+        return dtos;
+    }
+
     public List<ScheduleEntity> scheduleDTOList2EntityList(List<ScheduleDtoResponse> dtos) {
         List<ScheduleEntity> entities = new ArrayList<>();
         for (ScheduleDtoResponse dto : dtos) {
@@ -98,4 +122,40 @@ public class ScheduleMapper {
         return entities;
     }
 
+    public List<FilterDTOResponse> filterEntityList2DTOList(List<ScheduleEntity> entities) {
+        List<FilterDTOResponse> dtos = new ArrayList<>();
+        for (ScheduleEntity entity : entities) {
+            dtos.add(filterEntity2DTO(entity));
+        }
+        return dtos;
+    }
+
+    public FilterDTOResponse filterEntity2DTO(ScheduleEntity scheduleSaved) {
+        FilterDTOResponse dtoResponse = new FilterDTOResponse();
+
+        dtoResponse.setActivity(scheduleSaved.getActivity().getName());
+        dtoResponse.setGrade(scheduleSaved.getClassEntity().getGrade() + scheduleSaved.getClassEntity().getDivision());
+        dtoResponse.setDepartment(scheduleSaved.getClassEntity().getDepartment());
+        dtoResponse.setEmployee(scheduleSaved.getEmployee().getFirstName() + " " +
+                scheduleSaved.getEmployee().getLastName());
+        return dtoResponse;
+    }
+
+    public ScheduleSearchDto scheduleEntity2ScheduleSearchDto(List<ScheduleEntity> schedules) {
+        ScheduleSearchDto searchDto = new ScheduleSearchDto();
+        Set<String> activities = new HashSet<>();
+        Set<String> grade = new HashSet<>();
+        Set<String> department = new HashSet<>();
+
+        for (ScheduleEntity schedule : schedules){
+            activities.add(schedule.getActivity().getName());
+            grade.add(schedule.getClassEntity().getGrade());
+            department.add(schedule.getClassEntity().getDepartment());
+        }
+        searchDto.setActivity(activities.stream().sorted().collect(Collectors.toList()));
+        searchDto.setGrades(grade.stream().sorted().collect(Collectors.toList()));
+        searchDto.setDepartment(department.stream().sorted().collect(Collectors.toList()));
+
+        return searchDto;
+    }
 }

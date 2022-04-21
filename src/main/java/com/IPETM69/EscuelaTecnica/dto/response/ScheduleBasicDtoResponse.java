@@ -13,14 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ScheduleDtoResponse {
+public class ScheduleBasicDtoResponse {
     
     private Long id;
-    private Long idActivity;
-    private Long idClass;
-    private List<TimePrintDTO> times;
-    private Long idEmployee;
-    private ReplacementDTO replacement;
+    private String activity;
+    private String grade;
     private PositionEnum position;
     
 }
