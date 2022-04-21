@@ -2,6 +2,7 @@ package com.IPETM69.EscuelaTecnica.mapper;
 
 import com.IPETM69.EscuelaTecnica.dto.request.ScheduleDtoRequest;
 import com.IPETM69.EscuelaTecnica.dto.response.FilterDTOResponse;
+import com.IPETM69.EscuelaTecnica.dto.response.ScheduleBasicDtoResponse;
 import com.IPETM69.EscuelaTecnica.dto.response.ScheduleDtoResponse;
 import com.IPETM69.EscuelaTecnica.dto.response.ScheduleSearchDto;
 import com.IPETM69.EscuelaTecnica.entity.ScheduleEntity;
@@ -12,7 +13,10 @@ import com.IPETM69.EscuelaTecnica.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
@@ -73,6 +77,16 @@ public class ScheduleMapper {
         return scheduleDtoResponse;
     }
 
+    public ScheduleBasicDtoResponse scheduleEntity2DTOBasic(ScheduleEntity scheduleSaved) {
+        ScheduleBasicDtoResponse dtoResponse = new ScheduleBasicDtoResponse();
+        dtoResponse.setId(scheduleSaved.getId());
+        dtoResponse.setActivity(scheduleSaved.getActivity().getName());
+        dtoResponse.setGrade(scheduleSaved.getClassEntity().getGrade() + scheduleSaved.getClassEntity().getDivision());
+        dtoResponse.setPosition(scheduleSaved.getPosition());
+
+        return dtoResponse;
+    }
+
     public void scheduleEntityRefreshValues(ScheduleEntity scheduleEntity, ScheduleDtoRequest scheduleDtoRequest) {
         scheduleEntity.setActivity((activityRepository.findById(scheduleDtoRequest.getIdActivity()).orElseThrow( () -> new ParamNotFound("Activity not found."))));
         scheduleEntity.setClassEntity(classRepository.findById(scheduleDtoRequest.getIdClass()).orElseThrow( () -> new ParamNotFound("Class not found.")));
@@ -88,6 +102,14 @@ public class ScheduleMapper {
         List<ScheduleDtoResponse> dtos = new ArrayList<>();
         for (ScheduleEntity entity : entities) {
             dtos.add(scheduleEntity2DTO(entity));
+        }
+        return dtos;
+    }
+
+    public List<ScheduleBasicDtoResponse> scheduleEntityList2DTOBasicList(List<ScheduleEntity> entities) {
+        List<ScheduleBasicDtoResponse> dtos = new ArrayList<>();
+        for (ScheduleEntity entity : entities) {
+            dtos.add(scheduleEntity2DTOBasic(entity));
         }
         return dtos;
     }
